@@ -3,8 +3,9 @@ LaraStarter is Laravel starter template with AdminLTE 3 and Bootstrap 5.
 
 <h2>Features</h2>
 <ul>
-    <li>CRUD Post, Category, Tag, User</li>
+    <li>Laravel Breeze</li>
     <li>Spatie Permission v6</li>
+    <li>CRUD Post, Category, Tag, User</li>
 </ul>
 
 <h3>Layout</h3>
