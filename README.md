@@ -1,5 +1,5 @@
 <h1>LaraStarter</h1>
-LaraStarter is Laravel starter template with AdminLTE 3 and Bootstrap 5. 
+LaraStarter is Laravel v10 starter template with AdminLTE 3 and Bootstrap 5. 
 
 ![image](https://github.com/muhazmi/lara-starter/assets/22718017/a0b50847-0c56-45ca-8344-4cbcec9707c9)
 ![image](https://github.com/muhazmi/lara-starter/assets/22718017/92cb9b0b-ca65-41a0-b63d-1e9856c686ab)
