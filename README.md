@@ -59,9 +59,20 @@ Backend: <a href="https://adminlte.io/themes/v3">AdminLTE 3</a>
 </ul>
 
 <h2>Localization</h2>
-You can choose between Bahasa Indonesia or English with set APP_LOCALE in .env file with value ID or EN
+You can choose between Bahasa Indonesia or English with set APP_LOCALE in .env file with value ID or EN.
 
-Do you have another suggestions? Star, fork, and create PR for this repo. Let's make this repo better!
+<h2>Screenshot</h2>
+
+![image](https://github.com/user-attachments/assets/76fe0e78-ce99-45b4-b39f-a8542c625124)
+
+![image](https://github.com/user-attachments/assets/e2a0fd76-e7da-4e15-ae12-59a7c282eb52)
+
+![image](https://github.com/user-attachments/assets/0d527f07-f0fe-4ee2-82fc-fccbfa29b80d)
+
+![image](https://github.com/user-attachments/assets/37a5b13c-4d6c-4672-8ed0-05eb5ab5a653)
 
 <h2>Wanna Work with Me?</h2>
 Let's talk: <a href="mailto: amperakoding@gmail.com">amperakoding@gmail.com</a>
+
+<h2>Do you have another suggestions?</h2>
+Star, fork, and create PR for this repo. Let's make this repo better!
