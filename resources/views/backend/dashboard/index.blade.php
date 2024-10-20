@@ -1,9 +1,7 @@
 @extends('backend.layouts.app')
 
 @section('content')
-    @if (auth()->user()->hasRole('masteradmin'))
-        @include('backend.dashboard.record.record-masteradmin')
-    @elseif(auth()->user()->hasRole('superadmin'))
+    @if (auth()->user()->hasRole('superadmin'))
         @include('backend.dashboard.record.record-superadmin')        
     @else
         @include('backend.dashboard.record.record-admin')
@@ -11,9 +9,7 @@
 @endsection
 
 @section('script_addon_footer')
-    @if (auth()->user()->hasRole('masteradmin'))
-        @include('backend.dashboard.script-masteradmin')
-    @elseif(auth()->user()->hasRole('superadmin'))
+    @if(auth()->user()->hasRole('superadmin'))
         @include('backend.dashboard.script-superadmin')
     @else
         @include('backend.dashboard.script-admin')
