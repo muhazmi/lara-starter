@@ -33,6 +33,8 @@ Backend: <a href="https://adminlte.io/themes/v3">AdminLTE 3</a>
     <li>Open your terminal / cmd / powershell to this project and run these commands:
         <ul>
             <li>composer install / composer update</li>
+            <li>npm install</li>
+            <li>npm run dev</li>
             <li>cp .env.example .env</li>
             <li>php artisan key:generate</li>
             <li>php artisan migrate</li>
