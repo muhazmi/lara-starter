@@ -1,0 +1,105 @@
+/* ----------------------------------------------------------------
+	Alert
+-----------------------------------------------------------------*/
+.alert {
+    color: $color-white;
+    padding: 0.85rem 1.5rem;
+    z-index: 9999;
+
+    span[data-notify~="title"] {
+        display: block;
+        font-weight: bold;
+    }
+
+    span.fas {
+        font-size: $font-size-icon;
+        float: left;
+        padding-top: 10px;
+        min-width: 40px;
+        min-height: 40px;
+    }
+
+    .close {
+        color: $color-white;
+        font-weight: 300;
+        padding: 12px 18px;
+    }
+
+    >.alert-icon {
+        float: left;
+
+        i {
+            font-size: 34px;
+        }
+    }
+
+    >p {
+        padding-left: 54px;
+    }
+
+    &.alert-primary {
+        background-color: $color-primary;
+        border-color: darken($color-primary, 5%);
+    }
+
+    &.alert-secondary {
+        background-color: $color-secondary;
+        border-color: darken($color-secondary, 5%);
+    }
+
+    &.alert-success {
+        background-color: $color-success;
+        border-color: darken($color-success, 5%);
+    }
+
+    &.alert-info {
+        background-color: $color-info;
+        border-color: darken($color-info, 5%);
+    }
+
+    &.alert-danger {
+        background-color: $color-danger;
+        border-color: darken($color-danger, 5%);
+    }
+
+    &.alert-warning {
+        background-color: $color-warning;
+        border-color: darken($color-warning, 5%);
+    }
+
+    &.alert-light {
+        color: $color-dark;
+        background-color: $background-light;
+        border-color: $border-color;
+
+        .alert-link,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: $color-dark;
+        }
+    }
+
+    &.alert-dark {
+        background-color: $color-dark;
+        border-color: darken($color-dark, 5%);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    .alert-link {
+        color: $color-white;
+    }
+
+    [data-notify="progressbar"] {
+        height: 2px !important;
+        margin-top: 8px;
+    }
+}

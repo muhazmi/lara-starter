@@ -1,0 +1,53 @@
+//Avatar
+.avatar {
+  flex-shrink: 0;
+  width: $spacer*1.8;
+  height: $spacer*1.8;
+  border-radius: 50%;
+
+  .avatar-lg {
+    width: $spacer*2;
+    height: $spacer*2;
+  }
+
+  .avatar-sm {
+    width: $spacer;
+    height: $spacer;
+  }
+}
+.avatar-xl {
+  width: $spacer*6;
+  height: $spacer*6;
+}
+
+.avatar-lg {
+  width: $spacer*2;
+  height: $spacer*2;
+}
+
+.avatar-sm {
+  width: $spacer;
+  height: $spacer;
+}
+
+ul.avatars {
+  display: flex;
+  padding: 0;
+  list-style: none;
+
+  >li {
+    &:not(:last-child) {
+      margin-right: -$spacer/4;
+    }
+  }
+}
+
+//Avatar - Responsive
+@include breakpoint-lg(min) {
+  .avatar {
+    &.avatar-lg {
+      width: $spacer*3;
+      height: $spacer*3;
+    }
+  }
+}

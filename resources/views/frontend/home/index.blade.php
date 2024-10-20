@@ -1,5 +1,5 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-    @include('frontend.home.latest_post')
+    @include('frontend.home.latest-article')
 @endsection

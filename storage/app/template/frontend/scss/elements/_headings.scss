@@ -1,0 +1,328 @@
+/* ----------------------------------------------------------------------
+	Headings
+-------------------------------------------------------------------------*/
+.heading {
+    margin-bottom: 100px;
+    text-align: center;
+
+    >h1,
+    >h2 {
+        font-size: 40px;
+        text-transform: capitalize;
+        line-height: 46px;
+        font-weight: 300;
+    }
+
+    >h1,
+    >h2,
+    >h4,
+    >p {
+        margin-bottom: default-bottom-margin;
+    }
+}
+
+.heading-text {
+    margin-bottom: 30px;
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        font-size: 70px;
+        font-weight: 600;
+    }
+
+    h2 {
+        font-size: 60px;
+        margin-bottom: 30px;
+        letter-spacing: -.7px;
+        line-height: 66px;
+    }
+
+    h3 {
+        font-size: 60px;
+        margin-bottom: 30px;
+        letter-spacing: -.7px;
+        line-height: 66px;
+    }
+
+    h4 {
+        font-size: 34px;
+        margin-bottom: 30px;
+        letter-spacing: -.7px;
+        line-height: 40px;
+    }
+
+    p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+
+    &.heading-gradient {
+        h2 {
+            >* {
+                -webkit-text-fill-color: transparent !important;
+                -webkit-background-clip: text !important;
+                background: radial-gradient(circle at left top, #4b72ff 9%, #2250fc 48%, #6442ff 91%);
+            }
+        }
+    }
+
+    &.heading-section {
+        h2 {
+            position: relative;
+            font-size: 48px;
+            line-height: 56px;
+            margin-bottom: 60px;
+
+            &:before {
+                content: "";
+                position: absolute;
+                height: 2px;
+                width: 100px;
+                background-color: $color-theme;
+                bottom: -30px;
+                left: 0;
+                right: 0;
+            }
+        }
+
+        &.text-center {
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                &:before {
+                    margin: 0 auto;
+                }
+            }
+        }
+
+        &.text-right {
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                &:before {
+                    right: 0;
+                    left: auto;
+                }
+            }
+        }
+
+        p {
+            font-size: 18px;
+            font-weight: 300;
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &.heading-plain {
+        h2 {
+            font-size: 56px;
+            line-height: 56px;
+            font-family: initial;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: 300;
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &.heading-light {
+        h2 {
+            font-size: 59px;
+            font-weight: 100;
+            letter-spacing: -1px;
+            line-height: 70px;
+        }
+
+        p {
+            font-size: 17px;
+            font-weight: 300;
+            margin-bottom: 20px;
+
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &.heading-vintage {
+        h2 {
+            border: 2px solid $color-white;
+            display: inline-block;
+            padding: 8px 21px;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 17px;
+            font-weight: 300;
+            margin-bottom: 20px;
+
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+
+    &.heading-line {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            &:before {
+                content: '';
+                position: absolute;
+                width: 30px;
+                height: 2px;
+                left: 0;
+                bottom: -8px;
+                right: 0;
+                background-color: #ddd;
+            }
+        }
+
+        &.text-center {
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                &:before {
+                    margin: 0 auto;
+                }
+            }
+        }
+
+        &.text-right {
+
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6 {
+                &:before {
+                    right: 0;
+                    left: auto;
+                }
+            }
+        }
+    }
+
+    &.heading-small {
+
+        h2,
+        h3 {
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+    }
+}
+
+@include breakpoint-lg(max) {
+    .heading-text {
+        margin-bottom: 16px;
+    
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 16px;
+        }
+    
+        h1 {
+            font-size: 50px;
+        }
+    
+        h2 {
+            font-size: 40px;
+            line-height: 44px;
+        }
+    
+        h3 {
+            font-size: 30px;
+            margin-bottom: 10px;
+            line-height: 36px;
+        }
+    
+        h4 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            line-height: 26px;
+        }
+    
+        p {
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+        &.heading-plain,
+        &.heading-light,
+        &.heading-section {
+            h2 {  
+                font-size: 40px;
+                line-height: 44px;
+                margin-bottom: 16px;
+
+                &:before {
+                    display: none;
+                }
+            }
+            p {
+                font-size: 16px;
+                margin-bottom: 16px;
+            }
+        }
+    }
+}
+
+/*Creative fade heading*/
+.heading-creative {
+    font-size: 62px;
+    font-weight: 100;
+    position: relative;
+    text-align: left;
+    width: 100%;
+
+    strong {
+        color: $color-theme;
+    }
+}
+
+/*Fixes*/
+#header:not([data-transparent="true"]).dark .heading-creative {
+    color: $light;
+}

@@ -1,66 +1,122 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ImageUploadController;
+
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\PostController;
+
+// FRONTEND
 use App\Http\Controllers\RegionController;
-
-use App\Http\Controllers\Admin\TagController;
-use App\Http\Controllers\Admin\RoleController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ImageUploadController;
 use App\Http\Controllers\Admin\ProfileController;
-use App\Http\Controllers\Admin\CategoryController;
+
+// BACKEND
 use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\NavigationController;
-use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\Other\LogController;
+use App\Http\Controllers\Admin\Cms\TagController;
 
-use App\Http\Controllers\Author\PostController as AuthorPostController;
-use App\Http\Controllers\Author\DashboardController as AuthorDashboardController;
+use App\Http\Controllers\Admin\Cms\ArticleController;
 
-Route::get('/', [HomeController::class, 'index'])->name('home.index');
+use App\Http\Controllers\Admin\Master\UserController;
+use App\Http\Controllers\Admin\Other\BackupController;
+use App\Http\Controllers\Admin\Setting\MenuController;
+use App\Http\Controllers\Admin\Setting\RoleController;
 
-Route::get('region/getCity', [RegionController::class, 'getCity'])->name('region.getCity');
-Route::get('region/getDistrict', [RegionController::class, 'getDistrict'])->name('region.getDistrict');
-Route::get('region/getVillage', [RegionController::class, 'getVillage'])->name('region.getVillage');
+use App\Http\Controllers\Admin\Master\CategoryController;
+use App\Http\Controllers\Admin\Setting\CompanyController;
+use App\Http\Controllers\Admin\Setting\SubMenuController;
+use App\Http\Controllers\Admin\Setting\PermissionController;
+use App\Http\Controllers\Admin\Master\CategoryTypeController;
+use App\Http\Controllers\Admin\Setting\PrivacyPolicyController;
+use App\Http\Controllers\Admin\Setting\TermsAndConditionController;
+
+use App\Http\Controllers\PageController as FrontPageController;
+use App\Http\Controllers\ArticleController as FrontArticleController;
+use App\Http\Controllers\TagController as FrontTagController;
 
 Route::post('image-upload', [ImageUploadController::class, 'storeImage'])->name('image.upload');
 
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
-Route::get('/posts/search', [PostController::class, 'search'])->name('posts.search');
-Route::get('/posts/{slug}', [PostController::class, 'show'])->name('posts.show');
-Route::get('/posts/{slug}/related', [PostController::class, 'getRelatedPosts']);
-Route::get('/posts/archive/{year}/{month}', [PostController::class, 'archive'])->name('posts.archive');
-Route::get('/posts/category/{category}', [PostController::class, 'category'])->name('posts.category');
+// HOMEPAGE
+Route::get('', [HomeController::class, 'index'])->name('homepage');
 
-Route::middleware(['auth','role:admin'])->prefix('admin')->group(function () {
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::resource('categories', CategoryController::class);
-    Route::resource('tags', TagController::class);
-    Route::resource('profile', ProfileController::class)->only(['edit', 'update']);
+// FRONT-END
+// pages
+Route::get('about', [FrontPageController::class, 'about'])->name('front.page.about');
 
-    Route::prefix('configuration')->group(function () {
+// article
+Route::get('article', [FrontArticleController::class, 'index'])->name('front.article');
+Route::get('article/tag/{tag}', [FrontArticleController::class, 'tag'])->name('front.article.tags');
+Route::get('article/search', [FrontArticleController::class, 'search'])->name('front.article.search');
+Route::get('article/{slug}', [FrontArticleController::class, 'show'])->name('front.article.show');
+Route::get('article/{slug}/related', [FrontArticleController::class, 'front.getRelatedArticles']);
+
+// Route::middleware(['auth', 'verified', 'role:superadmin|administrator|employee'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'verified', 'only_internal'])->prefix('admin')->group(function () {
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('backend.dashboard');
+    Route::get('dashboard/data', [DashboardController::class, 'getData'])->name('dashboard.data');
+    
+    Route::get('profile/edit', [ProfileController::class, 'edit'])->name('backend.profile.edit');
+    Route::patch('profile/update', [ProfileController::class, 'update'])->name('backend.profile.update');
+    Route::patch('profile/destroy', [ProfileController::class, 'destroy'])->name('backend.profile.destroy');
+
+    // MASTER
+    Route::prefix('master')->group(function () {
+        Route::resource('categories', CategoryController::class);
+        Route::resource('category_types', CategoryTypeController::class);
         Route::resource('users', UserController::class);
-        Route::resource('navigations', NavigationController::class);
-        Route::resource('permissions', PermissionController::class);
-        Route::resource('roles', RoleController::class);
+    });
+
+    // CMS
+    Route::prefix('cms')->group(function () {
+        Route::resource('articles', ArticleController::class);
+        Route::resource('tags', TagController::class);
+    });
+
+    // SETTING
+    Route::prefix('setting')->group(function () {
+        Route::get('company/edit', [CompanyController::class, 'edit'])->name('company.edit');
+        Route::patch('company/update', [CompanyController::class, 'update'])->name('company.update');
+
+        Route::get('privacy-policy/edit/', [PrivacyPolicyController::class, 'edit'])->name('backend.privacy-policy.edit');
+        Route::patch('privacy-policy/update', [PrivacyPolicyController::class, 'update'])->name('backend.privacy-policy.update');
+
+        Route::get('terms-and-conditions/edit/', [TermsAndConditionController::class, 'edit'])->name('backend.terms_and_conditions.edit');
+        Route::patch('terms-and-conditions/update', [TermsAndConditionController::class, 'update'])->name('backend.terms_and_conditions.update');
+
+        // for a specific guard:
+        Route::group(['middleware' => ['role:superadmin']], function () {
+            Route::resource('menus', MenuController::class);
+            Route::resource('sub_menus', SubMenuController::class);
+            Route::resource('permissions', PermissionController::class);
+            Route::resource('roles', RoleController::class);
+        });
+    });
+
+    // OTHER
+    Route::middleware(['role:superadmin'])->prefix('other')->group(function () {
+        // log
+        Route::get('logs', [LogController::class, 'index'])->name('logs.index');
+
+        // Menampilkan halaman backup
+        Route::get('backup_databases', [BackupController::class, 'index'])->name('backup.index');
+
+        // Proses backup database
+        Route::post('backup_databases/run', [BackupController::class, 'runBackup'])->name('backup.run');
+
+        // Hapus satu file backup
+        Route::delete('backup_databases/delete/{filename}', [BackupController::class, 'deleteBackup'])->name('backup.delete');
+
+        // Hapus semua backup
+        Route::delete('backup_databases/delete_all', [BackupController::class, 'deleteAllBackups'])->name('backup.deleteAll');
+
+        // Download file backup
+        Route::get('backup/download/{filename}', [BackupController::class, 'download'])->name('backup.download');
     });
 });
 
-Route::middleware('auth')->prefix('author')->group(function () {
-    Route::get('dashboard', [AuthorDashboardController::class, 'index'])->name('author.dashboard');
-    // Custom routes for author posts
-    Route::get('posts', [AuthorPostController::class, 'index'])->name('author.posts');
-    Route::get('posts/create', [AuthorPostController::class, 'create'])->name('author.posts.create');
-    Route::post('posts', [AuthorPostController::class, 'store'])->name('author.posts.store');
-    Route::get('posts/{post}', [AuthorPostController::class, 'show'])->name('author.posts.show');
-    Route::get('posts/{post}/edit', [AuthorPostController::class, 'edit'])->name('author.posts.edit');
-    Route::patch('posts/{post}', [AuthorPostController::class, 'update'])->name('author.posts.update');
-    Route::delete('posts/{post}', [AuthorPostController::class, 'destroy'])->name('author.posts.destroy');
-
-    Route::get('profile', [ProfileController::class, 'show'])->name('author.profile');
-    Route::get('profile/edit', [ProfileController::class, 'edit'])->name('author.profile.edit');
-    Route::patch('profile/update', [ProfileController::class, 'update'])->name('author.profile.update');
+Route::prefix('region')->group(function () {
+    Route::get('getCity', [RegionController::class, 'getCity'])->name('region.getCity');
+    Route::get('getDistrict', [RegionController::class, 'getDistrict'])->name('region.getDistrict');
+    Route::get('getVillage', [RegionController::class, 'getVillage'])->name('region.getVillage');
 });
 
 require __DIR__ . '/auth.php';

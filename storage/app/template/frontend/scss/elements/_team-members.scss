@@ -1,0 +1,138 @@
+// DELETE VARIABLES
+/* ----------------------------------------------------------------
+    Team Members
+-----------------------------------------------------------------*/
+.team-members {
+    .team-member {
+        background-color: $color-white;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 30px;
+        border-radius: 4px;
+
+        .team-image {
+            margin-bottom: 20px;
+
+            >img {
+                width: 100%;
+                border-radius: $border-radius $border-radius 0 0;
+            }
+        }
+
+        .team-desc {
+            padding-bottom: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+
+            >h3 {
+                font-size: 16px;
+                line-height: 22px;
+                margin-bottom: 0;
+            }
+
+            >span {
+                font-size: 13px;
+                color: $dark-light;
+                line-height: 18px;
+            }
+
+            >p {
+                margin-top: 10px;
+                font-size: 14px;
+            }
+        }
+    }
+
+    &.team-members-circle {
+        .team-member {
+            background-color: transparent;
+            padding: 20px;
+
+            .team-image {
+                >img {
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+
+    &.team-members-card {
+        .team-member {
+            border: 1px solid $light;
+            border-radius: 4px;
+
+            .team-image {
+                >img {
+                    border-radius: 0;
+                }
+            }
+
+            .team-desc {
+                background-color: #fdfdfd;
+                border-radius: 0px 0px 4px 4px;
+                padding: 10px;
+            }
+        }
+    }
+
+    &.team-members-shadow {
+        .team-member {
+            border: 1px solid $light;
+            box-shadow: 0px 3px 16px rgba(0, 0, 0, 0.03);
+
+            .team-image {
+                >img {
+                    border-radius: 0;
+                }
+            }
+
+            .team-desc {
+                padding: 20px;
+            }
+        }
+    }
+
+    &.team-members-transparent {
+        .team-member {
+            background-color: transparent;
+
+            .team-desc {
+                >h3 {
+                    color: $color-white;
+                }
+
+                >span {
+                    color: $color-white;
+                }
+
+                >p {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    &.team-members-left {
+        .team-member {
+            text-align: left;
+
+            .team-image {
+                float: left;
+                width: 40%;
+                margin-bottom: 0;
+            }
+
+            .team-desc {
+                >h3 {
+                    margin-top: 0;
+                }
+
+                overflow: hidden;
+                position: relative;
+                width: 60%;
+                padding-left: 30px;
+            }
+        }
+    }
+}

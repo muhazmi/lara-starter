@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +17,7 @@ class AuthenticatedSessionController extends Controller
     public function create(): View
     {
         $data = [
-            'page_title' => 'Create',
+            'page_title' => __('Login'),
         ];
 
         return view('auth.login', $data);
@@ -33,7 +32,17 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::user();
+
+        // Cek role pengguna dan redirect ke halaman yang sesuai
+        if ($user->hasRole('customer')) {
+            return redirect()->intended('/');
+        } elseif ($user->hasAnyRole(['masteradmin','superadmin', 'admin', 'admin_master', 'admin_cms', 'admin_finance'])) {
+            return redirect()->intended(route('backend.dashboard', absolute: false));
+        }
+
+        // Redirect default jika role tidak dikenali
+        return redirect()->intended(route('/'));
     }
 
     /**

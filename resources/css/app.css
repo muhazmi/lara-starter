@@ -1,0 +1,48 @@
+@import "./back-to-top.css";
+
+@import "@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "@fortawesome/fontawesome-free/css/regular.css";
+@import "@fortawesome/fontawesome-free/css/solid.css";
+@import "@fortawesome/fontawesome-free/css/brands.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1 {
+  @apply mb-3 text-5xl font-bold sm:text-3xl md:text-5xl lg:text-5xl xl:text-6xl;
+}
+h2 {
+  @apply py-3 text-2xl font-bold sm:text-2xl md:text-2xl lg:text-2xl xl:text-4xl;
+}
+h3 {
+  @apply py-3 mt-3 text-xl font-bold sm:text-2xl md:text-2xl lg:text-2xl xl:text-2xl;
+}
+h4 {
+  @apply py-3 text-lg font-bold;
+}
+h5 {
+  @apply py-3 font-bold;
+}
+img {
+  @apply w-full h-auto;
+}
+ul {
+  @apply px-5 list-decimal list-outside;
+}
+ol {
+  @apply px-5 list-decimal list-outside;
+}
+.no-list-style ul,
+.no-list-style ol,
+.no-list-style li {
+    @apply p-0 m-0 list-none; /* Menghapus gaya list dan padding/margin */
+}
+
+p{
+  @apply py-2 leading-relaxed;
+}
+
+[x-cloak] {
+  display: none !important;
+}

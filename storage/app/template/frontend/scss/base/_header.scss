@@ -1,0 +1,467 @@
+/* ----------------------------------------------------------------
+    Header
+-----------------------------------------------------------------*/
+#header {
+    position: relative;
+    width: 100%;
+    z-index: 199 !important;
+    height: $header-height;
+    line-height: $header-height;
+
+    .container {
+        position: relative;
+    }
+
+    .header-inner,
+    #header-wrap {
+        height: $header-height;
+        background-color: $background-white;
+        /*         backface-visibility: hidden;
+        -webkit-backface-visibility: hidden; */
+        left: 0;
+        right: 0;
+        transition: all .4s ease-in-out;
+
+        /*logo*/
+        #logo {
+            float: left;
+            font-size: 28px;
+            position: relative;
+            z-index: 1;
+            transition: all .4s ease-in-out;
+            height: $header-height;
+
+            a {
+                >img {
+                    vertical-align: inherit;
+                    transition: all .4s ease-in-out;
+                    height: $header-height;
+                    width: auto;
+                }
+
+                >img,
+                [class*="logo-"] {
+                    display: none;
+                }
+
+                .logo-default {
+                    display: block;
+                }
+            }
+
+            a,
+            a span {
+                font-family: $font-headings;
+                font-size: 40px;
+                color: $dark;
+                font-weight: 800;
+                letter-spacing: 1.5px;
+            }
+        }
+    }
+
+    // Header fullwidth
+    &[data-fullwidth="true"] {
+
+        .header-inner,
+        #header-wrap {
+            .container {
+                max-width: 100%;
+                padding: 0 30px;
+            }
+        }
+    }
+
+    &.header-modern:not(.header-active) {
+        margin: 40px auto 0;
+        width: 1200px;
+
+        .header-inner,
+        #header-wrap {
+            border-radius: 4px;
+        }
+
+        +.inspiro-slider,
+        +#slider,
+        +.fullscreen,
+        +.halfscreen,
+        +#google-map {
+            top: -(50 + $header-height);
+            margin-bottom: -(50 + $header-height);
+        }
+    }
+
+    // Header mini version
+    &.header-mini {
+        line-height: - 20 + $header-height;
+        height: -20 + $header-height;
+
+        .header-inner,
+        #header-wrap {
+            height: -20 + $header-height;
+
+            #mainMenu {
+                >.container {
+                    nav>ul>li {
+                        >a {
+                            font-size: 11px;
+                        }
+
+                        .dropdown-submenu:before {
+                            top: -6px;
+                        }
+                    }
+                }
+            }
+
+            #logo {
+                height: -20 + $header-height;
+
+                a {
+                    >img {
+                        height: -20 + $header-height;
+                    }
+                }
+
+                a,
+                a span {
+                    font-size: 30px;
+                }
+            }
+
+            #mainMenu-trigger {
+                height: -20 + $header-height;
+            }
+
+            .header-extras {
+                height: -20 + $header-height;
+            }
+        }
+    }
+
+    // Header alternative
+    &.header-alternative {
+        line-height: - 20 + $header-height;
+        height: -20 + $header-height;
+
+        .header-inner,
+        #header-wrap {
+            height: -20 + $header-height;
+
+            #mainMenu {
+                >.container {
+                    nav>ul>li {
+                        .dropdown-submenu:before {
+                            top: -6px;
+                        }
+                    }
+                }
+            }
+
+            #logo {
+                height: -20 + $header-height;
+
+                a {
+                    >img {
+                        height: -20 + $header-height;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                    }
+                }
+            }
+
+            #mainMenu-trigger {
+                height: -20 + $header-height;
+            }
+
+            .header-extras {
+                height: -20 + $header-height;
+            }
+        }
+    }
+
+    // Header transparent
+    &[data-transparent="true"] {
+        &:not(.sticky-active) {
+
+            .header-inner,
+            #header-wrap {
+                background-color: transparent;
+            }
+        }
+
+        +.inspiro-slider,
+        +#slider,
+        +.fullscreen,
+        +.halfscreen,
+        +#google-map {
+            top: -$header-height;
+            margin-bottom: -$header-height;
+        }
+    }
+
+    // Header logo right
+    &.header-logo-right {
+
+        .header-inner,
+        #header-wrap {
+            #logo {
+                float: right;
+            }
+
+            .header-extras {
+                float: left;
+            }
+
+            #mainMenu nav {
+                float: left;
+            }
+        }
+    }
+
+    // Header shadow
+    &.header-shadow {
+
+        .header-inner,
+        #header-wrap {
+            box-shadow: 0 0 18px 0 rgba(0, 0, 0, .12) !important;
+        }
+    }
+
+    // Header transparent
+    &[data-transparent="true"] {
+
+        &:not(.sticky-active),
+        &:not(.sticky-active).dark {
+
+            .header-inner,
+            #header-wrap {
+                background-color: transparent;
+            }
+        }
+
+        +.inspiro-slider,
+        +#slider,
+        +.fullscreen,
+        +.halfscreen,
+        +#google-map {
+            top: -$header-height;
+            margin-bottom: -$header-height;
+        }
+    }
+
+    // Header sticky
+    &.header-sticky {
+
+        .header-inner,
+        #header-wrap {
+            transition: top .8s ease-in-out;
+            top: -($header-height + 60);
+        }
+
+        &.sticky-active .header-inner,
+        &.sticky-active #header-wrap {
+            box-shadow: 0 12px 6px rgba(0, 0, 0, 0.06);
+            top: 0;
+            position: fixed;
+            margin: 0 auto;
+            width: 100%;
+        }
+    }
+
+    // Header always fixed
+    &.header-always-fixed {
+
+        .header-inner,
+        #header-wrap {
+            position: fixed !important;
+            top: 0 !important;
+        }
+    }
+}
+
+// Header dark
+.dark #header,
+#header.dark {
+
+    .header-inner,
+    #header-wrap {
+        background-color: $background-dark;
+
+        #logo {
+            a {
+
+                >img,
+                [class*="logo-"] {
+                    display: none;
+                }
+
+                .logo-dark {
+                    display: block;
+                }
+            }
+
+            a,
+            a span {
+                color: $color-white;
+            }
+        }
+
+        .lines,
+        .lines:before,
+        .lines:after {
+            background-color: $color-white;
+        }
+    }
+
+    // Header transparent
+    &[data-transparent="true"] {
+        &:not(.sticky-active) {
+
+            .header-inner,
+            #header-wrap {
+                background-color: transparent;
+            }
+        }
+    }
+}
+
+@include breakpoint-xl() {
+    body.boxed {
+        #header {
+            .header-inner {
+                max-width: $layout-boxed-width;
+                margin: auto;
+            }
+        }
+    }
+
+    body.modern {
+        #header {
+            .header-inner {
+                >.container {
+                    max-width: $layout-modern-width;
+                    padding: 0 15px;
+                }
+            }
+        }
+    }
+
+    body.frame {
+        #header.header-sticky.sticky-active .header-inner {
+            left: 20px;
+            right: 20px;
+            top: 20px;
+        }
+    }
+}
+
+/* ----------------------------------------------------------------
+HEADER: Responsive
+-----------------------------------------------------------------*/
+@include breakpoint-lg(max) {
+    #header {
+
+        .header-inner,
+        #header-wrap {
+            height: auto;
+        }
+
+        #logo {
+            position: absolute !important;
+            width: 100%;
+            text-align: center;
+            margin: 0 !important;
+            float: none;
+            height: 80px;
+            left: 0;
+            right: 0;
+            padding: 0 !important;
+
+            >a {
+                display: inline-block;
+                img {max-height: 80px;padding-bottom: 6px;}
+            }
+
+            .logo-responsive {
+                display: block;
+            }
+
+            .logo-responsive-dark {
+                display: block;
+            }
+        }
+
+        &.header-mobile-logo-left {
+            #header #logo {
+                width: auto;
+                text-align: left;
+                left: 30px;
+                right: auto;
+            }
+            
+            .header-extras {
+                float: right;
+                margin-left: 20px;
+            }
+    
+        }
+
+        &.header-alternative {
+
+            .header-inner,
+            #header-wrap {
+                height: auto;
+            }
+        }
+
+        &.header-modern {
+            margin: 0 !important;
+            width: 100% !important;
+
+            .header-inner,
+            #header-wrap {
+                border-radius: 0px !important;
+            }
+        }
+
+        &.header-logo-right {
+
+            .header-inner,
+            #header-wrap {
+                .header-extras {
+                    float: right;
+                }
+            }
+        }
+
+        &.header-mini {
+
+            .header-inner,
+            #header-wrap {
+                height: auto !important;
+            }
+        }
+    }
+}
+
+@include breakpoint-lg(max) {
+    #header {
+        &[data-transparent="true"] {
+            +main {
+                top: - ($header-height + 40);
+                margin-bottom: - ($header-height + 44);
+                position: relative;
+
+                >#page-title {
+                    padding: ($header-height + $header-height) 0 $header-height 0;
+                }
+            }
+
+            +.fullscreen {
+                top: - ($header-height);
+                margin-bottom: - ($header-height);
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 100;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.back-to-top.show {
+    opacity: 1;
+}
+
+.back-to-top.hide {
+    opacity: 0;
+}

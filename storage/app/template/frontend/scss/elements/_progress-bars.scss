@@ -1,0 +1,180 @@
+/* ----------------------------------------------------------------------
+	Progress Bar
+-------------------------------------------------------------------------*/
+.p-progress-bar-container,
+.progress-bar-container {
+    width: 100%;
+    height: 40px;
+    margin: 20px 0 20px 0;
+    overflow: hidden;
+    background-color: #eee;
+}
+
+.p-progress-bar,
+.progress-bar {
+    height: 100%;
+    padding: 10px;
+    background-color: $color-theme;
+    box-shadow: none;
+
+    .progress-number,
+    .progress-type {
+        color: #fff;
+        float: right;
+        margin-top: -2px;
+    }
+}
+
+.progress-title {
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    position: absolute;
+    text-align: left;
+
+    i {
+        margin-right: 8px;
+    }
+}
+
+// Radius style 
+.p-progress-bar-container,
+.progress-bar-container {
+    &.radius {
+
+        &,
+        .p-progress-bar,
+        .progress-bar {
+            border-radius: 4px;
+        }
+    }
+
+    // Title up style
+    &.title-up {
+        .progress-title {
+            color: #333;
+            margin-left: -10px;
+            margin-top: -32px;
+        }
+
+        &:not(:first-child) {
+            margin-top: 40px;
+        }
+
+        .p-progress-bar,
+        .progress-bar {
+
+            .progress-number,
+            .progress-type {
+                color: #333;
+                margin-top: -32px;
+                position: absolute;
+                right: 15px;
+            }
+
+            .progress-number {
+                right: 26px;
+            }
+        }
+    }
+
+    // Medium size 
+    &.medium {
+        height: 20px;
+
+        .p-progress-bar,
+        .progress-bar {
+            padding: 0;
+        }
+
+        .progress-title {
+            margin-left: 0;
+            margin-top: -20px;
+        }
+
+        .p-progress-bar,
+        .progress-bar {
+
+            .progress-number,
+            .progress-type {
+                margin-top: -18px;
+            }
+        }
+    }
+
+    // Small size
+    &.small {
+        height: 10px;
+
+        .p-progress-bar,
+        .progress-bar {
+            padding: 0;
+        }
+
+        .progress-title {
+            margin-left: 0;
+            margin-top: -20px;
+        }
+
+        .p-progress-bar,
+        .progress-bar {
+
+            .progress-number,
+            .progress-type {
+                margin-top: -18px;
+            }
+        }
+    }
+
+    // Progress bar no-bg
+    &.no-bg {
+        background: none !important;
+    }
+
+    // Progress extra small
+    &.extra-small {
+        height: 2px;
+
+        .p-progress-bar,
+        .progress-bar {
+            padding: 0;
+        }
+
+        .progress-title {
+            margin-left: 0;
+            margin-top: -20px
+        }
+
+        .p-progress-bar,
+        .progress-bar {
+
+            .progress-number,
+            .progress-type {
+                margin-top: -18px;
+            }
+        }
+    }
+
+    // Transparent progress bar
+    &.transparent {
+        background: none !important;
+
+        .p-progress-bar,
+        .progress-bar {
+            background-color: rgba(0, 0, 0, 0.35);
+        }
+
+        &.title-up {
+
+            .p-progress-bar,
+            .progress-bar {
+
+                .progress-title,
+                .progress-number,
+                .progress-type {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

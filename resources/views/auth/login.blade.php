@@ -1,59 +1,57 @@
-@extends('layouts.guest')
+<x-guest-layout>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-@section('content')
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="" class="h1">
-                    <img src="{{ asset('images/general/app-logo.png') }}" height="35" alt="">
-                    <b>{{ config('app.name') }}</b>
-                </a>
-            </div>
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-            <div class="card-body">
-                <x-auth-session-status class="mb-4" :status="session('status')" />
-
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="form-group">
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                            name="email" value="{{ old('email') }}" placeholder="Email">
-                        @if ($errors->has('email'))
-                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                        @endif
-                    </div>
-                    <div class="form-group">
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-                            name="password" placeholder="Password">
-                        @if ($errors->has('password'))
-                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                        @endif
-                    </div>
-
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="remember">
-                                <label for="remember">
-                                    Remember Me
-                                </label>
-                            </div>
-                        </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block"><i class="fa-solid fa-arrow-right-to-bracket"></i> Login</button>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                </form>
-
-                <p class="mb-1">
-                    <a href="{{ url('forgot-password') }}">Forgot password</a>
-                </p>
-            </div>
-            <!-- /.card-body -->
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required
+                autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        <!-- /.card -->
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block w-full mt-1" type="password" name="password" required
+                autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mt-4">
+            <div class="flex items-center">
+                <!-- Remember Me -->
+                <label for="remember_me" class="inline-flex items-center">
+                    <input id="remember_me" type="checkbox"
+                        class="text-indigo-600 border-gray-300 rounded shadow-sm dark:bg-gray-900 dark:border-gray-700 focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
+                        name="remember">
+                    <span class="text-sm text-gray-600 ms-2 dark:text-gray-400">{{ __('Ingat Saya') }}</span>
+                </label>
+            </div>
+
+            <div class="flex flex-col items-end space-y-2">
+                <x-primary-button class="ms-3">
+                    {{ __('Login') }}
+                </x-primary-button>
+            </div>
+        </div>
+
+    </form>
+    <div class="py-3 row">
+        @if (Route::has('password.request'))
+            <a class="text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                href="{{ route('password.request') }}">
+                {{ __('Lupa Password?') }}
+            </a>
+        @endif
     </div>
-@endsection
+
+    <div class="text-sm text-gray-600 row dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Belum punya Akun?
+        <a href="{{ route('register') }}" class="text-blue-500 hover:text-blue-800">Daftar disini</a>
+    </div>
+</x-guest-layout>

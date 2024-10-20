@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('backend.layouts.app')
 
 @section('content')
     @if ($errors->any())
@@ -7,14 +7,14 @@
         @endforeach
     @endif
 
-    <form action="{{ route('profile.update', $users->id) }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('backend.profile.update') }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PATCH')
 
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">
-                    <ul class="nav nav-pills ml-auto">
+                    <ul class="ml-auto nav nav-pills">
                         <li class="nav-item">
                             <a class="nav-link active" href="#biodata" data-toggle="tab"><i class="far fa-id-card"></i>
                                 Biodata</a>
@@ -29,45 +29,45 @@
             </div><!-- /.card-header -->
 
             <div class="card-body">
-                <div class="tab-content p-0">
-                    <!-- Morris chart - Sales -->
+                <div class="p-0 tab-content">
+                    <!-- Morris chart - Bookings -->
                     <div class="chart tab-pane active" id="biodata">
                         <div class="row">
                             <div class="col col-12 col-lg-3">
                                 <div class="form-group">
                                     <label for="name">Nama Lengkap (*)</label>
                                     <input type="text" class="form-control" name="name" id="name"
-                                        value="{{ old('name', $users->name) }}" required>
+                                        value="{{ old('name', $user->name) }}" required>
                                 </div>
                             </div>
                             <div class="col col-12 col-lg-3">
                                 <div class="form-group">
                                     <label for="identity_card_number">NIK</label>
-                                    <input type="number" class="form-control" name="identity_card_number"
-                                        id="identity_card_number" value="{{ $users->identity_card_number }}">
+                                    <input type="text" class="form-control" name="identity_card_number"
+                                        id="identity_card_number" maxlength="16" value="{{ $user->identity_card_number }}">
                                 </div>
                             </div>
                             <div class="col col-12 col-lg-3">
                                 <div class="form-group">
-                                    <label for="phone">No. HP</label>
-                                    <input type="number" class="form-control" name="phone" id="phone"
-                                        value="{{ $users->phone }}">
+                                    <label for="mobile_phone">No. HP</label>
+                                    <input type="number" class="form-control" name="mobile_phone" id="mobile_phone"
+                                        value="{{ $user->mobile_phone }}">
                                 </div>
                             </div>
                             <div class="col col-12 col-lg-3">
                                 <div class="form-group">
                                     <label for="gender">Jenis Kelamin</label>
                                     <br>
-                                    <input type="radio" name="gender" id="gender" value="1"
-                                        @if ($users->gender == '1') checked @endif> Pria
-                                    <input type="radio" name="gender" id="gender" value="0"
-                                        @if ($users->gender == '0') checked @endif> Wanita
+                                    <input type="radio" name="gender" id="gender" value="man"
+                                        @if ($user->gender == 'man') checked @endif> Pria
+                                    <input type="radio" name="gender" id="gender" value="woman"
+                                        @if ($user->gender == 'woman') checked @endif> Wanita
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="address">Alamat</label>
-                            <textarea type="address" class="form-control" name="address" id="address" rows="2">{{ $users->address }}</textarea>
+                            <textarea type="address" class="form-control" name="address" id="address" rows="2">{{ $user->address }}</textarea>
                         </div>
 
                         <div class="row">
@@ -77,7 +77,7 @@
                                     <select class="form-control" name="province_id" id="province_id">
                                         @foreach ($provinces as $province)
                                             <option value="{{ $province->code }}"
-                                                @if ($province->code == $users->province_id) selected @endif>
+                                                @if ($province->code == $user->province_id) selected @endif>
                                                 {{ $province->name }}
                                             </option>
                                         @endforeach
@@ -90,7 +90,7 @@
                                     <select name="city_id" id="city_id" class="form-control">
                                         @foreach ($cities as $city)
                                             <option value="{{ $city->code }}"
-                                                @if ($city->code == $users->city_id) selected @endif>
+                                                @if ($city->code == $user->city_id) selected @endif>
                                                 {{ $city->name }}
                                             </option>
                                         @endforeach
@@ -103,7 +103,7 @@
                                     <select name="district_id" id="district_id" class="form-control">
                                         @foreach ($districts as $district)
                                             <option value="{{ $district->code }}"
-                                                @if ($district->code == $users->district_id) selected @endif>
+                                                @if ($district->code == $user->district_id) selected @endif>
                                                 {{ $district->name }}
                                             </option>
                                         @endforeach
@@ -116,7 +116,7 @@
                                     <select name="village_id" id="village_id" class="form-control">
                                         @foreach ($villages as $village)
                                             <option value="{{ $village->code }}"
-                                                @if ($village->code == $users->village_id) selected @endif>
+                                                @if ($village->code == $user->village_id) selected @endif>
                                                 {{ $village->name }}
                                             </option>
                                         @endforeach
@@ -129,31 +129,31 @@
                                 <div class="form-group">
                                     <label for="rt">RT</label>
                                     <input type="number" class="form-control" name="rt" id="rt"
-                                        value="{{ $users->rt }}">
+                                        value="{{ $user->rt }}">
                                 </div>
                             </div>
                             <div class="col col-4 col-lg-4">
                                 <div class="form-group">
                                     <label for="rw">RW</label>
                                     <input type="number" class="form-control" name="rw" id="rw"
-                                        value="{{ $users->rw }}">
+                                        value="{{ $user->rw }}">
                                 </div>
                             </div>
                             <div class="col col-4 col-lg-4">
                                 <div class="form-group">
                                     <label for="postcode">Kode Pos</label>
                                     <input type="number" class="form-control" name="postcode" id="postcode"
-                                        value="{{ $users->postcode }}" placeholder="isikan angka saja">
+                                        value="{{ $user->postcode }}" placeholder="isikan angka saja">
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col col-12 col-lg-4">
                                 <div class="form-group">
-                                    <label for="current_profile_image">Foto Saat Ini</label>
-                                    @if ($users->profile_image)
+                                    <label for="current_photo">Foto Saat Ini</label>
+                                    @if ($user->photo)
                                         <p>
-                                            <img src="{{ Storage::url('images/users/' . $users->profile_image) }}"
+                                            <img src="{{ Storage::url('images/users/' . $user->photo) }}"
                                                 alt="Profile Image" class="img-fluid">
                                         </p>
                                     @else
@@ -163,14 +163,14 @@
                             </div>
                             <div class="col col-12 col-lg-4">
                                 <div class="form-group">
-                                    <label for="profile_image">Foto Baru</label>
+                                    <label for="photo">Foto Baru</label>
                                     <br>
-                                    <input type="file" name="profile_image" id="profile_image" accept="image/*">
+                                    <input type="file" name="photo" id="photo" accept="image/*">
                                 </div>
                             </div>
                             <div class="col col-12 col-lg-4">
                                 <div class="form-group">
-                                    <label for="profile_image">Preview Foto Baru</label>
+                                    <label for="photo">Preview Foto Baru</label>
                                     <br>
                                     <img id="imagePreview" src="" alt="Preview Gambar" style="display: none;"
                                         class="img-fluid">
@@ -185,7 +185,7 @@
                                 <div class="form-group">
                                     <label for="email">Email</label>
                                     <input type="email" class="form-control" name="email" id="email"
-                                        value="{{ $users->email }}">
+                                        value="{{ $user->email }}">
                                 </div>
                             </div>
                             <div class="col col-12 col-lg-6">
@@ -193,7 +193,7 @@
                                     <label for="password">Password</label>
                                     <input type="password" class="form-control" name="password" id="password"
                                         value="" placeholder="diisi jika ingin mengganti password"
-                                        autocomplete="false">
+                                        autocomplete="new-password">
                                 </div>
                             </div>
                         </div>
@@ -212,9 +212,8 @@
     </form>
 @endsection
 
-@section('script_addon')
+@section('script_addon_footer')
     <!-- select2 -->
-    <script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <script type="text/javascript" src="{{ asset('assets/plugins/select2/js/select2.full.min.js') }}"></script>
@@ -224,6 +223,79 @@
         $('form').submit(function() {
             $('#submit').attr('disabled', 'disabled');
             return true; // proses form
+        });
+
+        $(document).ready(function() {
+            $('form').on('submit', function(e) {
+                e.preventDefault(); // Mencegah form submit secara default
+
+                let formData = new FormData(this);
+
+                $.ajax({
+                    url: $(this).attr('action'),
+                    method: $(this).attr('method'),
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function(response) {
+                        if (response.success) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: response.message,
+                                timer: 3000,
+                                showConfirmButton: false
+                            }).then(function() {
+                                if (response.logout) {
+                                    window.location.href =
+                                    '/login'; // Redirect ke halaman login jika logout
+                                }
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: response.message,
+                                timer: 3000,
+                                showConfirmButton: false
+                            });
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        if (xhr.status === 422) {
+                            // Mengambil pesan error dari response
+                            let errors = xhr.responseJSON.errors;
+                            let errorMessage = '';
+
+                            // Loop melalui error dan gabungkan menjadi satu pesan
+                            $.each(errors, function(key, value) {
+                                errorMessage += value[0] +
+                                '<br>'; // Tambahkan error ke dalam pesan
+                            });
+
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Validation Error',
+                                html: errorMessage, // Menggunakan html untuk multiple lines
+                            });
+                        } else {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Failed to update profile. Please try again later.',
+                                timer: 3000,
+                                showConfirmButton: false
+                            });
+                        }
+                    },
+                    complete: function() {
+                        $('#submit').attr('disabled', false); // Enable tombol setelah selesai
+                    }
+                });
+
+                // Disable tombol submit untuk mencegah double submit
+                $('#submit').attr('disabled', true);
+            });
         });
 
         $('#province_id').select2({
@@ -243,10 +315,10 @@
             placeholder: "-- Pilih Kelurahan / Desa --",
         });
 
-        const profile_image = document.getElementById("profile_image");
+        const photo = document.getElementById("photo");
         const imagePreview = document.getElementById("imagePreview");
 
-        profile_image.addEventListener("change", function() {
+        photo.addEventListener("change", function() {
             const file = this.files[0];
             if (file) {
                 const reader = new FileReader();

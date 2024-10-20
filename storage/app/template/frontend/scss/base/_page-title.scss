@@ -1,0 +1,158 @@
+ /* ----------------------------------------------------------------------
+    Page title
+-------------------------------------------------------------------------*/
+ #page-title {
+     clear: both;
+     padding: 80px 0;
+     background-color: $page-title-background;
+     position: relative;
+
+     .page-title {
+         text-align: center;
+         padding: 0;
+
+         >h1 {
+             font-family: $page-title-font;
+             font-size: 2.5rem;
+             line-height: 1.2;
+             font-weight: 400;
+             margin-bottom: 1rem;
+         }
+
+         >span {
+             font-weight: 400;
+             font-size: 14px;
+         }
+     }
+
+     .breadcrumb {
+         text-align: center;
+         margin-bottom: 0;
+         padding: 0;
+     }
+
+     /* page header left*/
+     &.page-title-left {
+         .page-title {
+             float: left;
+             text-align: left;
+             clear: both;
+         }
+
+         .breadcrumb {
+             float: left;
+             text-align: left;
+             display: block;
+         }
+     }
+
+     /* page header right*/
+     &.page-title-right {
+         .page-title {
+             float: right;
+             text-align: right;
+             clear: both;
+         }
+
+         .breadcrumb {
+             float: right;
+             text-align: right;
+         }
+     }
+
+     &[data-bg-parallax] {
+         .page-title {
+             >h1 {
+                 color: $color-white;
+             }
+
+             >span {
+                 color: $color-white;
+             }
+         }
+
+         .breadcrumb {
+             ul {
+                 li {
+                     +li:before {
+                         color: $color-white;
+                     }
+
+                     a {
+                         color: $color-white;
+                     }
+                 }
+             }
+         }
+     }
+
+     &[data-bg-parallax],
+     &[data-bg-video] {
+         background-color: $dark;
+     }
+ }
+
+
+
+ #header {
+     &[data-transparent="true"] {
+         +#page-title {
+             top: - ($header-height + 40);
+             margin-bottom: - ($header-height + 44);
+             position: relative;
+             padding: ($header-height + $header-height+60) 0 ($header-height + $header-height) 0;
+         }
+     }
+ }
+
+
+ //dark version
+.dark #page-title,
+ #page-title.dark {
+    background-color: $background-dark;
+
+    .page-title {
+        >h1 {
+            color: $dark;
+        }
+
+        >span {
+            color: $dark;
+        }
+    }
+
+    .breadcrumb {
+        ul {
+            li {
+                +li:before {
+                    color: $dark;
+                }
+
+                a {
+                    color: $dark;
+                }
+            }
+        }
+    }
+}
+
+ @include breakpoint-lg(max) {
+     #page-title {
+         .page-title {
+             >h1 {
+                 font-size: 26px;
+                 line-height: 34px;
+             }
+         }
+     }
+
+     #header {
+         &[data-transparent="true"] {
+             +#page-title {
+                 top: - ($header-height + 40);
+                 margin-bottom: - ($header-height + 44);
+                 padding: ($header-height + $header-height) 0 $header-height 0;
+             }
+         }
+     }
+ }

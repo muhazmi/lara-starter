@@ -1,0 +1,79 @@
+//Background Overlay
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    content: ' ';
+    z-index: 0;
+    background: rgba(0, 0, 0, .59);
+    opacity: .5;
+
+    &[data-style="1"] {
+        background: $background-white;
+    }
+
+    &[data-style="2"] {
+        background: $background-theme;
+        opacity: .9;
+    }
+
+    &[data-style="3"] {
+        background: linear-gradient(140deg, rgb(124, 27, 214) 0%, rgb(49, 4, 155) 100%);
+        opacity: .9;
+    }
+
+    &[data-style="4"] {
+        background: linear-gradient(140deg, rgba(236, 0, 83, 0.979) 0%, rgba(231, 46, 0, 0.71) 100%);
+        opacity: .9;
+    }
+
+    &[data-style="5"] {
+        background: radial-gradient(circle at left top, #09c8e6 20%, #2250fc 38%, #5839e4 66%);
+        opacity: .9;
+    }
+
+    &[data-style="6"] {
+        background: radial-gradient(circle at left top, #FE68BB 38%, #4294FA 66%);
+        opacity: .9;
+    }
+
+    &[data-style="7"] {
+        background: radial-gradient(circle at right top, rgb(196, 214, 34) 20%, rgb(147, 216, 57) 38%, #4294FA 66%);
+        opacity: .9;
+    }
+
+    &[data-style="8"] {
+        background: linear-gradient(180deg, #e02b20 0%, #720462 100%);
+        opacity: .9;
+    }
+
+    &[data-style="9"] {
+        background: radial-gradient(circle at center, #00a6c0 0%, #0c71c3 100%);
+        opacity: .9;
+    }
+
+    &[data-style="10"] {
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0.99) 100%);
+        opacity: 1;
+    }
+
+    &[data-style="11"] {
+        background: linear-gradient(90deg, rgb(0, 144, 240) 0%, #5d08e6 100%);
+        opacity: .9;
+    }
+
+    &[data-style="12"] {
+        background: linear-gradient(to bottom, #ba01ff 0, #ff0092 100%);
+        opacity: .8;
+    }
+
+    ~.container,
+    ~.container-fluid {
+        position: relative;
+        z-index: 2;
+    }
+}

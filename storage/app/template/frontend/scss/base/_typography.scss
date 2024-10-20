@@ -1,0 +1,308 @@
+/* ----------------------------------------------------------------
+	Typography : Reset
+-----------------------------------------------------------------*/
+*,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+    display: block;
+}
+
+/* ----------------------------------------------------------------
+	Typography : Font size
+-----------------------------------------------------------------*/
+html {
+    font-size:88%
+   }
+@media all and (max-width: 768px) {
+    html {
+        font-size: 81.25%;
+    }
+}
+
+body {
+    font-size: 1rem;
+    line-height: 1.65714286em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: $font-body;
+    color: $color-body;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: $font-headings;
+    color: $color-heading;
+    margin: 0;
+    letter-spacing: 0.5px;
+
+    small {
+        font-weight: 100;
+    }
+}
+
+h1,
+.h1 {
+    font-size: 3.14285714em;
+    line-height: 1.31818182em;
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+h2,
+.h2 {
+    font-size: 2.35714286em;
+    line-height: 1.36363636em;
+    font-weight: 500;
+
+    &:not(:last-child) {
+        margin-bottom: 16px;
+    }
+}
+
+h3,
+.h3 {
+    font-size: 1.78571429em;
+    line-height: 1.5em;
+    font-weight: 500;
+
+    &:not(:last-child) {
+        margin-bottom: 12px;
+    }
+}
+
+h4,
+.h4 {
+    font-size: 1.35714286em;
+    line-height: 1.68421053em;
+    font-weight: 600;
+
+    &:not(:last-child) {
+        margin-bottom: 8px;
+    }
+}
+
+h5,
+.h5 {
+    font-size: 1em;
+    line-height: 1.85714286em;
+    font-weight: 500;
+
+    &:not(:last-child) {
+        margin-bottom: 6px;
+    }
+}
+
+h6,
+.h6 {
+    font-size: 0.85714286em;
+    line-height: 2.16666667em;
+    font-weight: 500;
+
+    &:not(:last-child) {
+        margin-bottom: 6px;
+    }
+}
+
+.lead {
+    font-weight: 400;
+}
+
+@media all and (max-width: 767px) {
+
+    h1,
+    .h1 {
+        font-size: 2.35714286em;
+        line-height: 1.36363636em;
+    }
+
+    h2,
+    .h2 {
+        font-size: 1.78571429em;
+        line-height: 1.5em;
+    }
+
+    h3,
+    .h3 {
+        font-size: 1.35714286em;
+        line-height: 1.85714286em;
+    }
+
+    .lead {
+        font-size: 1.35714286em;
+        line-height: 1.68421053em;
+    }
+}
+
+.display-4 {
+    font-weight: 400;
+}
+
+p {
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    text-transform: none;
+    line-height: 1.7;
+    letter-spacing: 0;
+    color: $paragraph-color;
+    font-family: $font-body;
+}
+
+ul.bullets {
+    list-style: inside;
+}
+
+strong {
+    font-weight: 600;
+}
+
+del {
+    text-decoration-line: line-through;
+}
+a:not(.btn):not(.badge) {
+
+    &:hover,
+    &:focus,
+    &:active {
+        text-decoration: none;
+        outline: none;
+        color: $color-theme;
+    }
+
+    &:not(.btn):not([href]):not([tabindex]) {
+        color: $color-body;
+    }
+}
+
+
+
+//Dark version
+.dark {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    color: $color-light;
+}
+
+}
+
+
+//Chkd
+// Fonts
+.font-pacifico {
+    font-family: 'Dancing Script' !important;
+}
+
+
+
+
+.font-nothing-you-could-do,
+.font-nothing-you-could-do a,
+.font-nothing-you-could-do h1,
+.font-nothing-you-could-do h2,
+.font-nothing-you-could-do h3,
+.font-nothing-you-could-do h4,
+.font-nothing-you-could-do h5,
+.font-nothing-you-could-do h6,
+h1.font-nothing-you-could-do,
+h2.font-nothing-you-could-do,
+h3.font-nothing-you-could-do,
+h4.font-nothing-you-could-do,
+h5.font-nothing-you-could-do,
+h6.font-nothing-you-could-do {
+    font-family: 'Nothing You Could Do', cursive !important;
+    font-weight: normal !important;
+}
+
+.font-herr-von-muellerhoff,
+.font-herr-von-muellerhoff a,
+.font-herr-von-muellerhoff h1,
+.font-herr-von-muellerhoff h2,
+.font-herr-von-muellerhoff h3,
+.font-herr-von-muellerhoff h4,
+.font-herr-von-muellerhoff h5,
+.font-herr-von-muellerhoff h6,
+h1.font-herr-von-muellerhoff,
+h2.font-herr-von-muellerhoff,
+h3.font-herr-von-muellerhoff,
+h4.font-herr-von-muellerhoff,
+h5.font-herr-von-muellerhoff,
+h6.font-herr-von-muellerhoff {
+    font-family: 'Herr Von Muellerhoff', cursive !important;
+    font-weight: normal !important;
+}
+
+.font-cedarville,
+.font-cedarville a,
+.font-cedarville h1,
+.font-cedarville h2,
+.font-cedarville h3,
+.font-cedarville h4,
+.font-cedarville h5,
+.font-cedarville h6,
+h1.font-cedarville,
+h2.font-cedarville,
+h3.font-cedarville,
+h4.font-cedarville,
+h5.font-cedarville,
+h6.font-cedarville {
+    font-family: 'Cedarville Cursive', cursive;
+}
+
+.font-parisienne,
+.font-parisienne a,
+.font-parisienne h1,
+.font-parisienne h2,
+.font-parisienne h3,
+.font-parisienne h4,
+.font-parisienne h5,
+.font-parisienne h6,
+h1.font-parisienne,
+h2.font-parisienne,
+h3.font-parisienne,
+h4.font-parisienne,
+h5.font-parisienne,
+h6.font-parisienne {
+    font-family: 'Parisienne', cursive;
+}

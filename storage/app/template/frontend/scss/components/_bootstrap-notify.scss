@@ -1,0 +1,40 @@
+/* ----------------------------------------------------------------
+    Bootstrap Notify
+-----------------------------------------------------------------*/
+.alert [data-notify="progressbar"] {
+    height: 6px !important;
+    margin-top: 8px;
+}
+
+.progress .progress-bar {
+    height: 4px;
+    background-color: lighten($background-success, 10%);
+}
+
+.bootstrap-notify {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    &.alert {
+        .close {
+            padding: 4px;
+        }
+    }
+
+    z-index: 1500;
+
+    a,
+    a:hover,
+    a:visited {
+        color: $color-white !important;
+        text-decoration: underline;
+    }
+}
+
+.element-container {
+    box-shadow: none;
+    display: block !important;
+    margin: unset !important;
+    position: relative !important;
+    top: unset !important;
+    right: unset !important;
+    width: auto !important;
+}

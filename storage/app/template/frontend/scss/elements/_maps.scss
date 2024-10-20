@@ -1,0 +1,76 @@
+/* ----------------------------------------------------------------
+    Maps
+-----------------------------------------------------------------*/
+.map {
+  width: 100%;
+  min-height: 460px;
+  height: auto;
+}
+
+.fullscreen .map,
+.fullscreen.map {
+  min-height: 100vh;
+}
+
+//Maps Responsive 
+@include breakpoint-lg(max) {
+  .map {
+    min-height: 240px;
+  }
+
+  .fullscreen .map,
+  .fullscreen.map {
+    min-height: 100vh;
+  }
+}
+
+//Animated dot
+.animated-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: $background-theme;
+  position: relative;
+  top: -10px;
+  right: 8px;
+
+  &:before,
+  &:after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: $background-theme;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    transform: scale(0.5);
+    transform-origin: center center;
+    animation: pulse-me 3s linear infinite;
+  }
+
+  &:after {
+    animation-delay: 2.4s;
+  }
+}
+
+@keyframes pulse-me {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+
+  70% {
+    opacity: 0.09;
+  }
+
+  100% {
+    transform: scale(16);
+    opacity: 0;
+  }
+}

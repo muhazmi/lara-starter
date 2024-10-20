@@ -1,0 +1,206 @@
+// Lists & Bullet Lists
+.list {
+    clear: both;
+    display: block;
+    position: relative;
+
+    li {
+        line-height: 32px;
+
+        a {
+            color: $color-body;
+        }
+    }
+}
+
+.list-lines,
+.icon-list,
+.list-simple,
+.list-posts,
+.list ul {
+    padding: 0px;
+}
+
+.list,
+.list-icon,
+.list-lines,
+.icon-list,
+.list-simple,
+.list-posts,
+.list-tweets li {
+    list-style: none;
+
+    a {
+        color: $color-body;
+    }
+}
+
+.list-colored {
+    li a {
+        color: $color-theme;
+        font-weight: 600;
+    }
+}
+
+.list-legend {
+    li {
+        float: left;
+        margin-right: 14px;
+        margin-bottom: 10px;
+
+        span {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 9px;
+            background-color: $background-theme;
+            float: left;
+            margin-top: 6px;
+        }
+    }
+}
+
+.icon-list li,
+.list-arrow-icons li,
+.list-tweets li {
+    padding-left: 0px;
+}
+
+.list-medium li {
+    margin: 12px 0;
+}
+
+.list-large li {
+    margin: 18px 0;
+}
+
+.list-large li:first-child,
+.list-medium li:first-child {
+    margin-top: 0;
+}
+
+.list-large li:last-child,
+.list-medium li:last-child {
+    margin-bottom: 0;
+}
+
+.list-posts small {
+    display: block;
+    font-style: italic;
+    opacity: 0.7;
+}
+
+.list-lines {
+    list-style: none;
+
+    li {
+        border-bottom: 1px solid #ddd;
+        padding: 10px 0 10px 2px;
+
+        &:last-child {
+            border-bottom: 0px;
+        }
+    }
+}
+
+.list-icon {
+    list-style: none;
+    padding-left: 0;
+
+    ul {
+        list-style: none;
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+        margin-left: 20px;
+    }
+
+    i {
+        font-size: 15px;
+        margin-right: 14px;
+        margin-left: -20px;
+    }
+
+    &.list-icon-colored li:before,
+    &.icon-list-colored i {
+        color: $color-theme;
+    }
+
+    li:before {
+        margin-left: -20px;
+        position: absolute;
+        font-size: 12px;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        font-weight: 900;
+    }
+
+    &.list-icon-arrow li:before {
+        font-family: $font-icon-fontawesome;
+        content: "\f054";
+    }
+
+    &.list-icon-arrow-circle li:before {
+        content: "\f0a9";
+        font-family: $font-icon-fontawesome;
+    }
+
+    &.list-icon-check li:before {
+        content: "\f00c";
+        font-family: $font-icon-fontawesome;
+    }
+
+    &.list-icon-caret li:before {
+        content: "\f0da";
+        font-family: $font-icon-fontawesome;
+    }
+
+    &.list-icon-uncheck li:before {
+        content: "\f144";
+        font-family: $font-icon-fontawesome;
+    }
+
+    &.list-icon-plus li:before {
+        content: "\f055";
+        font-family: $font-icon-fontawesome;
+    }
+
+    &.list-icon-info li:before {
+        content: "\f05a";
+        font-family: $font-icon-fontawesome;
+    }
+
+    &.list-icon-circle li:before {
+        content: "\f192";
+        font-family: $font-icon-fontawesome;
+    }
+}
+
+a.list-group-item {
+    &.active {
+        background-color: $color-theme;
+        border: $color-theme;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
+            color: $color-white;
+        }
+
+        &:hover,
+        &.active {
+            color: $color-white !important;
+        }
+    }
+}

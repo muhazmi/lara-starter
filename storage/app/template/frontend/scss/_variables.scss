@@ -1,0 +1,119 @@
+// Layout 
+$layout-boxed-width: 1200px;
+$layout-modern-width: 1500px;
+// Typography
+$font-base: "Poppins",
+sans-serif;
+$font-body: $font-base;
+$font-headings: $font-base;
+$font-paragraph: "Nunito",
+sans-serif;
+$font-menu: $font-base;
+$font-menu-dropdown: $font-base;
+//Icons
+$font-size-icon: 24px;
+$font-icon: "inspiro-icons";
+$font-icon-fontawesome: "Font Awesome 5 Free";
+$font-icon-fontawesome-brands: "Font Awesome 5 Brands";
+// Font size
+$font-size: 13px;
+$font-weight: 300;
+// Base Colors
+$color-master: #626262 !default;
+$color-theme: #2250fc;
+$color-theme-hover: lighter($color-theme, 5%);
+$color-body: #484848;
+$color-primary: $color-theme;
+$color-secondary: #5A6268;
+$color-success: #81c868;
+$color-info: #53b0f8;
+$color-warning: #ffb20e;
+$color-danger: #CE041C;
+$color-complete: #2250fc;
+$color-white: #ffffff;
+$color-black: #000000;
+$color-grey: #cecece;
+$color-light: #999999;
+$color-lighter: lighten($color-light, 1.4%);
+$color-lightest: lighten($color-light, 3.5%);
+$color-dark: #9896a6;
+$color-dark-hover: #e2e2e2;
+$color-dark:mix($color-master, #000, 45%) !default;
+$color-darker:mix($color-master, #000, 27%) !default;
+$color-darkest:mix($color-master, #000, 18%) !default;
+$grey: #F7F9FB;
+$dark: #1f1f1f;
+$darker: #292929;
+$dark-light: #bbbbbb;
+$light: #eeeeee;
+$dark-grey: #262626;
+$slate-grey: #444444;
+$silver: #cccccc;
+$color-heading: $dark;
+$paragraph-color: #777777;
+$background-light: #f8f9fa;
+$background-dark: #181818;
+$background-white: #fff;
+$background-black: #000;
+$background-theme: $color-theme;
+$background-grey: #F7F9FB;
+$background-primary: $color-theme;
+$background-secondary: $color-secondary;
+$background-success: $color-success;
+$background-info: $color-info;
+$background-warning: $color-warning;
+$background-danger: $color-danger;
+// Header
+$header-height: 80px;
+$header-line-height: 80px;
+// Slider
+$slider-font: $font-base;
+// Side Panel
+$side-panel-width: 300px;
+$side-panel-width-collapsed: 80px;
+// Page Titile
+$page-title-font: $font-base;
+$page-title-background: $background-light;
+// Sidebar
+$sidebar-background: $background-light;
+// Footer
+$footer-background: $background-light;
+// Margins
+$default-margin: 14px;
+// Transitions
+$transition-ease: all 0.3s ease;
+// Utilities
+$border-width: 1px;
+$border-color: #e6e8eb;
+$border-color-dark: #2b2b2b;
+$border-radius: 5px;
+$border-background-color: $color-secondary;
+// Buttons
+$button-border-radius: $border-radius;
+// Forms
+$form-background-color: $color-lightest;
+$form-border-width: $border-width;
+$form-border-color: $border-color;
+$form-border-radius: $border-radius;
+// Define common padding and border radius sizes and more.
+$hover-color: $color-theme;
+$active-color: $color-theme;
+$active-bg-color: $grey;
+$box-shadow: 0 6px 38px rgba(0, 0, 0, 0.05);
+$line-height-lg: 1.5 !default;
+$line-height-sm: 1.5 !default;
+$border-width: 1px !default;
+$border-color: $border-color !default;
+$border-radius: 5px !default;
+$border-radius-lg: 8px !default;
+$border-radius-sm: 10px !default;
+$transition-base: all .3s ease !default;
+$transition-fade: opacity .15s linear !default;
+// Layout Breakpoints
+$breakpoint-xs: 0px; // Extra small devices
+$breakpoint-sm: 576px; // Small devices (landscape phones, 576px and up)
+$breakpoint-md: 768px; // Medium devices (tablets, 768px and up)
+$breakpoint-lg: 1024px; // Large devices (desktops, 992px and up)
+$breakpoint-xl: 1200px; // Extra large devices (large desktops, 1200px and up)
+//Spacing
+$spacer : 1.5rem; 

@@ -1,0 +1,367 @@
+/* ----------------------------------------------------------------
+    SLIDER
+-----------------------------------------------------------------*/
+.inspiro-slider {
+    width: 100%;
+    height: 72vh;
+    overflow: hidden;
+    transition: opacity .3s ease;
+    min-height: 100%;
+    width: 100%;
+
+    &.slider-halfscreen {
+        height: 72vh;
+    }
+
+    &.slider-fullscreen {
+        height: 100vh;
+    }
+
+    &.is-fade {
+        .slide {
+            opacity: 0 !important;
+            transition: opacity 0.5s ease !important;
+
+            &.is-selected {
+                opacity: 1 !important;
+            }
+        }
+    }
+
+    .slide {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: 50% 20%;
+        z-index: 1;
+        width: 100%;
+        display: flex !important;
+
+        .container,
+        .container-wide {
+            padding-top: 120px;
+            padding-bottom: 100px;
+            align-self: center !important;
+        }
+
+        .slide-captions {
+            position: relative;
+            text-align: left;
+
+            h1 {
+                font-size: 80px;
+                font-weight: 700;
+                line-height: 80px;
+                margin-bottom: 30px;
+                color: $color-white;
+            }
+
+            h2 {
+                font-size: 60px;
+                font-weight: 700;
+                line-height: 68px;
+                margin-bottom: 30px;
+                color: $color-white;
+            }
+
+            h3,
+            h4,
+            h5,
+            h6 {
+                color: $color-white;
+            }
+
+            .strong {
+                color: $color-white;
+                display: block;
+                font-size: 12px !important;
+                font-weight: 500;
+                letter-spacing: 2px;
+                line-height: 18px;
+                margin-bottom: 20px;
+                position: relative;
+                text-transform: uppercase;
+
+                &::after {
+                    border-top: 3px solid #fff;
+                    content: "";
+                    display: block;
+                    margin-bottom: 0;
+                    margin-top: 8px;
+                    width: 26px;
+                }
+            }
+
+            >p {
+                color: $color-white;
+                font-size: 20px;
+                font-weight: 400;
+                margin-bottom: 40px;
+            }
+
+            .text-dark.strong::after,
+            &.text-dark .strong::after {
+                border-top-color: #111;
+            }
+
+            &.text-left .strong::after {
+                margin-left: 0;
+                margin-right: auto;
+            }
+
+            &.text-center .strong::after {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            &.text-right .strong::after {
+                margin-left: auto;
+                margin-right: 0;
+            }
+
+            .slide-caption-hide {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            img {
+                width: inherit !important;
+            }
+        }
+
+        &.is-selected {
+            z-index: 2;
+        }
+    }
+
+    &.slider-loaded,
+    &.flickity-enabled {
+        opacity: 1;
+    }
+
+    .slide-link {
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: 1;
+    }
+
+    .flickity-button {
+        width: 78px;
+        height: 78px;
+        line-height: 78px;
+        background: transparent;
+        color: $color-white;
+        box-shadow: none;
+        padding: 0;
+
+        &::before {
+            line-height: 78px;
+            font-size: 28px;
+            color: $color-white;
+        }
+    }
+
+    .flickity-page-dots {
+        bottom: 30px;
+
+        .dot {
+            box-shadow: inset 0 0 0 2px $color-white;
+
+            &:after {
+                background-color: $color-white;
+                box-shadow: 0 0 1px $color-white;
+            }
+        }
+    }
+
+    .slide-captions>* {
+        opacity: 0;
+    }
+}
+
+#slider {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding: 0px;
+    background-color: $background-white;
+    z-index: 1;
+}
+
+#home {
+    width: 100%;
+    height: 100%;
+    color: #FFF;
+}
+
+/* ----------------------------------------------------------------
+    BOXED SLIDER
+-----------------------------------------------------------------*/
+.boxed-slider {
+    height: 600px;
+    width: 100%;
+
+    .polo-carousel-item {
+        height: 600px;
+    }
+
+    .owl-bg-img {
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+.polo-carousel-item img {
+    height: 100%;
+}
+
+/* ----------------------------------------------------------------
+    Inspiro Slider - Responsive Classes
+-----------------------------------------------------------------*/
+@include breakpoint-lg(max) {
+
+    
+    .inspiro-slider {
+
+        .flickity-button:hover {
+            background-color: transparent;
+        }
+            .flickity-button {
+
+                &.next,
+                &.next:hover {
+                    right: -5px !important;
+                    opacity: 1;
+                }
+    
+                &.previous,
+                &.previous:hover {
+                    left: -5px !important;
+                    opacity: 1;
+                }
+            }
+    
+
+        .container {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .slide {
+            .slide-captions {
+                text-align: center;
+
+                .strong {
+                    &::after {
+                        margin-left: auto;
+                        margin-right: auto;
+                    }
+                }
+
+                h1,
+                h2 {
+                    font-size: 40px;
+                    line-height: 40px;
+                    margin-bottom: 14px;
+                }
+
+                >p {
+                    font-size: 16px;
+                    font-weight: 400;
+                    line-height: 24px;
+                    margin-bottom: 16px;
+                }
+
+                h3,
+                h4,
+                h5,
+                h6 {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+}
+
+.fullscreen {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    min-height: 100vh;
+
+    .container,
+    .container-wide {
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+        margin-top: 80px;
+        margin-bottom: 40px;
+    }
+
+    .container-fullscreen {
+        width: 100%;
+    }
+}
+
+.halfscreen {
+    width: 100%;
+    height: 72%;
+    overflow: hidden;
+    -webkit-box-align: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    min-height: 72vh;
+
+    .container,
+    .container-wide {
+        margin-top: 2%;
+        -ms-flex-preferred-size: 0;
+        flex-basis: 0;
+        -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+        flex-grow: 1;
+    }
+
+    .container-fullscreen {
+        width: 100%;
+    }
+}
+
+//chkd (for the new slider)
+@include breakpoint-lg(max) {
+    #header {
+        &[data-transparent="true"] {
+            +main {
+                top: - ($header-height + 40);
+                margin-bottom: - ($header-height + 44);
+                position: relative;
+
+                >#page-title {
+                    padding: ($header-height + $header-height+60) 0 ($header-height + $header-height) 0;
+                }
+            }
+
+            +.fullscreen {
+                top: - ($header-height);
+                margin-bottom: - ($header-height);
+            }
+        }
+    }
+}

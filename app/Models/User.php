@@ -2,20 +2,16 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Laravel\Sanctum\HasApiTokens;
-use Laravolt\Indonesia\Models\City;
-use Laravolt\Indonesia\Models\Village;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
-use Laravolt\Indonesia\Models\District;
-use Laravolt\Indonesia\Models\Province;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasRoles, HasApiTokens, HasFactory, Notifiable;
+    use HasRoles, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -23,26 +19,33 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'role_id',
-        'name',
         'identity_card_number',
-        'email',
+        'name',
+        'birthplace',
         'email',
         'gender',
-        'phone',
+        'mobile_phone',
         'address',
-        'rt',
-        'rw',
         'province_id',
         'city_id',
         'district_id',
         'village_id',
+        'rt',
+        'rw',
         'postcode',
-        'profile_image',
+        'photo',
+        'is_active',
         'password',
-        'created_by',
-        'updated_by',
-        'deleted_by',
+
+        // employment
+        'hire_date',
+        'termination_date',
+        'salary',
+        'employment_status',
+
+        // additional
+        'remember_token',
+        'email_verified_at',
     ];
 
     /**
@@ -56,14 +59,56 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * Get the attributes that should be cast.
      *
-     * @var array<string, string>
+     * @return array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($model) {
+            if (Auth::check()) {
+                $model->created_by = Auth::id();
+                $model->updated_by = Auth::id();
+            }
+            $model->uuid = $model->generateUuid();
+        });
+
+        static::updating(function ($model) {
+            if (Auth::check()) {
+                $model->updated_by = Auth::id();
+            }
+        });
+    }
+
+    private function generateUuid($length = 10)
+    {
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+
+        do {
+            $randomString = '';
+
+            for ($i = 0; $i < $length; $i++) {
+                $randomString .= $characters[rand(0, strlen($characters) - 1)];
+            }
+        } while ($this->isUuidExist($randomString));
+
+        return $randomString;
+    }
+
+    private function isUuidExist($uuid)
+    {
+        return self::where('uuid', $uuid)->exists();
+    }
 
     public static function getAllList()
     {
@@ -90,6 +135,41 @@ class User extends Authenticatable
             ->get();
     }
 
+    // Scope untuk user yang tidak memiliki role masteradmin atau superadmin
+    public function scopeAdmin($query)
+    {
+        return $query->whereHas('roles', function ($q) {
+            $q->where('name', 'like', 'admin_%'); // Filter berdasarkan prefix 'admin_'
+        });
+    }
+
+    // Scope untuk user yang tidak memiliki role masteradmin atau superadmin
+    public function scopeNonAdmin($query)
+    {
+        return $query->whereHas('roles', function ($q) {
+            $q->whereNotIn('name', ['masteradmin', 'superadmin', 'admin', 'customer']);
+        });
+    }
+
+    public function scopeCustomer($query)
+    {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('name', 'customer');
+        });
+    }
+
+    public function scopeDriver($query)
+    {
+        return $query->whereHas('roles', function ($query) {
+            $query->where('name', 'driver');
+        });
+    }
+
+    public static function getLatestCustomers($limit = 5)
+    {
+        return self::customer()->latest()->take($limit)->get();
+    }
+
     public static function getTotalRows()
     {
         return self::count();
@@ -100,23 +180,28 @@ class User extends Authenticatable
         return $this->belongsTo(Role::class, 'role_id');
     }
 
-    public function province()
+    public function bookings()
     {
-        return $this->belongsTo(Province::class, 'province_id', 'code');
+        return $this->hasMany(Booking::class, 'customer_id');
     }
 
-    public function city()
+    public function driverBookings()
     {
-        return $this->belongsTo(City::class, 'city_id', 'code');
+        return $this->hasMany(BookingDriver::class, 'driver_id');
     }
 
-    public function district()
+    public function payrolls()
     {
-        return $this->belongsTo(District::class, 'district_id', 'code');
+        return $this->hasMany(Payroll::class, 'employee_id');
     }
 
-    public function village()
+    public function createdHistories()
     {
-        return $this->belongsTo(Village::class, 'village_id', 'code');
+        return $this->hasMany(PayrollHistory::class, 'created_by');
+    }
+
+    public function updatedHistories()
+    {
+        return $this->hasMany(PayrollHistory::class, 'updated_by');
     }
 }

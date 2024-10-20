@@ -1,0 +1,66 @@
+// Extra Small devices
+@mixin breakpoint-xs() {
+  @media (max-width: #{$breakpoint-xs}) {
+    @content;
+  }
+}
+
+// Small devices
+@mixin breakpoint-sm($dir: null) {
+  @if $dir==max {
+    @media (max-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (min-width: #{$breakpoint-sm}) {
+      @content;
+    }
+  }
+}
+
+// Medium devices
+@mixin breakpoint-md($dir: null) {
+  @if $dir==max {
+    @media (max-width: #{$breakpoint-md}) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (min-width: #{$breakpoint-md}) {
+      @content;
+    }
+  }
+}
+
+// Large devices
+@mixin breakpoint-lg($dir: null) {
+  @if $dir==max {
+    @media (max-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (min-width: #{$breakpoint-lg}) {
+      @content;
+    }
+  }
+}
+
+// Extra large devices
+@mixin breakpoint-xl($dir: null) {
+  @if $dir==max {
+    @media (max-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+
+  @else {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+}

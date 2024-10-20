@@ -1,0 +1,30 @@
+/*--------------------------------------------------------
+    Dashboard
+---------------------------------------------------------*/
+.dashboard {
+    #page-content {
+        background-color: $background-light;
+        padding: 0 !important;
+    }
+
+    .sidebar {
+        background-color: $background-white;
+        padding-top: 30px;
+        padding-right: 30px;
+        box-shadow: 5px 0 20px -5px rgba(0, 0, 0, .1);
+
+        &:before {
+            background: $background-white;
+            ;
+            position: fixed;
+            width: 30px;
+            height: 100%;
+            left: 0px;
+            top: 0px;
+        }
+    }
+
+    .content {
+        padding: 30px 50px;
+    }
+}

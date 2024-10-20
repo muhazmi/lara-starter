@@ -1,0 +1,380 @@
+// Wizard
+.wizard {
+    opacity: 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: opacity .3s linear;
+    transition-delay: .2s;
+
+    >.steps {
+        position: relative;
+        display: block;
+        width: 100%;
+        margin-bottom: 1rem;
+
+        ul {
+            position: relative;
+            z-index: 1;
+            display: flex;
+
+            li {
+                display: inline;
+                margin-right: 6px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                >a {
+                    background: $background-light;
+                    color: $color-dark;
+                    border-radius: $border-radius;
+                    display: inline-block;
+                    padding: 1rem;
+
+                    .number {
+                        margin-right: 4px;
+                        font-size: 1.429rem;
+
+                        &::after {
+                            content: ".";
+                            right: 0;
+                        }
+                    }
+
+                    &:hover,
+                    &:active {
+                        background: $color-theme;
+                        color: $color-white;
+                    }
+                }
+
+                &.current {
+
+                    a,
+                    a:hover,
+                    a:active {
+                        background: $color-theme;
+                        color: $color-white;
+                    }
+                }
+
+                &.error {
+
+                    a,
+                    a:hover,
+                    a:active {
+                        background: $background-danger;
+                        color: $color-white;
+                    }
+                }
+
+                &.disabled {
+
+                    a,
+                    a:hover,
+                    a:active {
+                        background: $background-light;
+                        color: $color-dark;
+                        cursor: not-allowed;
+                        opacity: .7;
+                    }
+                }
+            }
+        }
+    }
+
+    .content {
+        min-height: 320px;
+        padding-top: 30px;
+
+        >.body {
+            width: 100%;
+            height: auto;
+            position: absolute;
+
+            &.current {
+                position: relative;
+            }
+        }
+    }
+
+    .actions {
+        border-top: 1px solid $border-color;
+        padding-top: 20px;
+
+        >ul {
+            display: inline-block;
+            float: right;
+
+            >li {
+                display: inline;
+                float: left;
+                margin-left: 1rem;
+            }
+        }
+    }
+
+    &[data-style="1"] {
+        >.steps {
+            ul {
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 0 5rem;
+
+                li {
+                    &::after {
+                        content: "";
+                        position: absolute;
+                        top: 2.1rem;
+                        left: 0;
+                        right: 0;
+                        z-index: -1;
+                        border: 1px dashed $border-color;
+                    }
+
+                    >a {
+                        text-align: center;
+                        width: 4rem;
+                        height: 4rem;
+                        border-radius: 50%;
+                        padding: 1.2rem;
+
+                        .title {
+                            display: none;
+                        }
+
+                        .number {
+                            margin-right: 0;
+
+                            &::after {
+                                content: "";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &[data-style="2"] {
+        >.steps {
+            ul {
+                padding-top: 26px;
+
+                li {
+                    >a {
+                        width: 100px;
+                        height: 7px;
+                        border-radius: 3.5px;
+                        padding: 0;
+
+                        .title,
+                        .number {
+                            display: none;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            color: $color-heading;
+                            font-weight: 600;
+                        }
+                    }
+
+                    &:not(.current) {
+                        a {
+                            background-color: #e9ecef;
+                        }
+                    }
+
+                    &.current {
+                        a {
+                            .title {
+                                font-size: 20px;
+                                display: block;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &[data-orientation="vertical"] {
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        >.steps {
+            flex: 1;
+            width: 30%;
+            padding-right: 30px;
+
+            ul {
+                display: block;
+
+                li {
+                    width: 100%;
+                    margin-right: 0;
+
+                    >a {
+                        width: 100%;
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+
+        .content {
+            padding-top: 0;
+            width: 70%;
+        }
+
+        .actions {
+            width: 100%;
+        }
+
+        &[data-style="1"] {
+            >.steps {
+                ul {
+                    margin: 0;
+
+                    li {
+                        position: relative;
+
+                        &::after {
+                            height: 100%;
+                            left: 1.8rem;
+                            top: 0;
+                            bottom: 0;
+                            border: 0;
+                            border-left: 1px dashed $border-color;
+                        }
+
+                        padding-bottom: 20px;
+
+                        >a {
+                            padding: 0;
+                            text-align: left;
+                            width: 100%;
+                            height: auto;
+                            border-radius: none;
+                            background-color: transparent;
+
+                            .title {
+                                display: block;
+                                color: $color-dark;
+                                padding: 1.2rem 0;
+                            }
+
+                            .number {
+                                text-align: center;
+                                width: 3.5rem;
+                                height: 3.5rem;
+                                border-radius: 50%;
+                                padding: .6em;
+                                background: $background-light;
+                                color: $color-dark;
+                                margin-right: 10px;
+                                float: left;
+
+                                &::after {
+                                    content: "";
+                                }
+                            }
+                        }
+
+                        &:hover,
+                        &:active {
+                            a {
+                                .number {
+                                    background: $color-theme;
+                                    color: $color-white;
+                                }
+                            }
+                        }
+
+                        &.current {
+
+                            a,
+                            a:hover,
+                            a:active {
+                                .number {
+                                    background: $color-theme;
+                                    color: $color-white;
+                                }
+                            }
+                        }
+
+                        &.error {
+
+                            a,
+                            a:hover,
+                            a:active {
+                                .number {
+                                    background: $background-danger;
+                                    color: $color-white;
+                                }
+                            }
+                        }
+
+                        &.disabled {
+
+                            a,
+                            a:hover,
+                            a:active {
+                                .number {
+                                    background: $background-light;
+                                    color: $color-dark;
+                                    cursor: not-allowed;
+                                    opacity: .7;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.clearfix {
+        opacity: 1;
+    }
+}
+
+/* Accessibility */
+.wizard>.steps .current-info,
+.tabcontrol>.steps .current-info,
+.wizard>.content>.title,
+.tabcontrol>.content>.title {
+    position: absolute;
+    left: -999em;
+}
+
+// Wizard - Responsive
+@include breakpoint-sm(max) {
+    .wizard {
+        >.steps {
+            ul {
+                flex-direction: column;
+
+                li {
+                    flex: 1;
+                    margin-bottom: 10px;
+
+                    >a {}
+                }
+            }
+        }
+    }
+}
+
+// Wizard - Card
+.card {
+    .card-body {
+        .wizard {
+            padding: 1rem;
+        }
+    }
+}

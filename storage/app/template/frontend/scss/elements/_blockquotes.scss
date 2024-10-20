@@ -1,0 +1,61 @@
+/* ----------------------------------------------------------------
+	Blockquotes
+-----------------------------------------------------------------*/
+.blockquote {
+    border-left: 3px solid $color-theme;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 0 0 20px;
+}
+
+.blockquote-reverse {
+    padding-right: 15px;
+    padding-left: 0;
+    text-align: right;
+    border-right: 5px solid #eee;
+    border-left: 0;
+}
+
+.blockquote-simple {
+    border: 0 none !important;
+}
+
+.blockquote-fancy,
+.blockquote-color,
+.blockquote-dark {
+    border: 0 none !important;
+}
+
+.blockquote-color {
+    background-color: $color-theme;
+
+    small {
+        color: $color-white;
+    }
+}
+
+.blockquote-fancy {
+    &::before {
+        color: rgba(0, 0, 0, 0.04);
+        content: '"';
+        display: block;
+        font-size: 100px;
+        left: 4px;
+        position: absolute;
+        top: 14px;
+    }
+
+    >small {
+        float: right;
+    }
+}
+
+.blockquote-dark {
+    background-color: #333;
+}
+
+.blockquote-color,
+.blockquote-dark {
+    padding: 28px;
+    color: $color-white;
+}

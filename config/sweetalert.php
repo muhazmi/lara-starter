@@ -36,7 +36,7 @@ return [
     |
     */
 
-    'alwaysLoadJS' => env('SWEET_ALERT_ALWAYS_LOAD_JS', false),
+    'alwaysLoadJS' => env('SWEET_ALERT_ALWAYS_LOAD_JS', true),
 
     /*
     |--------------------------------------------------------------------------
@@ -66,7 +66,7 @@ return [
     |
     */
 
-    'timer' => env('SWEET_ALERT_TIMER', 2000),
+    'timer' => env('SWEET_ALERT_TIMER', 5000),
 
     /*
     |--------------------------------------------------------------------------
@@ -175,7 +175,7 @@ return [
 
     'button_text' => [
         'confirm' => env('SWEET_ALERT_CONFIRM_BUTTON_TEXT', 'OK'),
-        'cancel' => env('SWEET_ALERT_CANCEL_BUTTON_TEXT', 'Batal'),
+        'cancel' => env('SWEET_ALERT_CANCEL_BUTTON_TEXT', 'Cancel'),
     ],
 
     /*
@@ -200,7 +200,7 @@ return [
     |
     */
 
-    'timer_progress_bar' => env('SWEET_ALERT_TIMER_PROGRESS_BAR', true),
+    'timer_progress_bar' => env('SWEET_ALERT_TIMER_PROGRESS_BAR', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -218,7 +218,7 @@ return [
 
         'toast_close_button' => env('SWEET_ALERT_MIDDLEWARE_TOAST_CLOSE_BUTTON', true),
 
-        'timer' => env('SWEET_ALERT_MIDDLEWARE_ALERT_CLOSE_TIME', 5000),
+        'timer' => env('SWEET_ALERT_MIDDLEWARE_ALERT_CLOSE_TIME', 6000),
 
         'auto_display_error_messages' => env('SWEET_ALERT_AUTO_DISPLAY_ERROR_MESSAGES', true),
     ],

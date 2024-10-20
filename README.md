@@ -1,67 +1,66 @@
-<h1>LaraStarter</h1>
-LaraStarter is Laravel v10 starter template with AdminLTE 3 and Bootstrap 5. 
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/a0b50847-0c56-45ca-8344-4cbcec9707c9)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/92cb9b0b-ca65-41a0-b63d-1e9856c686ab)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/0754c01b-53ec-42a2-9c05-54fa7c5222e1)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/4f4d11a1-1b0d-4b58-891f-d966a9fe6b61)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/fc80ce1a-390d-4224-9346-7f764eeddf50)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/c82315bd-9fff-4c23-ba3d-abf139d24fe1)
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-<h2>Features</h2>
-<ul>
-    <li>Laravel Breeze (Blade)</li>
-    <li>Spatie Permission v6 with multi role</li>
-    <li>Indonesian Region by Laravolt include: Province, City, District, Village</li>
-    <li>Dashboard Admin: CRUD Post, Category, Tag, User, Navigation, Permission, Role</li>
-    <li>Dashboard Author: CRUD Post, Edit Profile</li>
-</ul>
+## About Laravel
 
-<h3>Layout</h3>
-Frontend: Bootstrap 5, Backend: AdminLTE 3
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-<h3>Packages</h3>
-<ul>
-    <li>Yajra Datatable</li>
-    <li>SweetAlert</li>
-    <li>Select2</li>
-    <li>Bootstrap Datepicker</li>
-    <li>Fontawesome 6</li>
-</ul>
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Or you can see all package that i've used in this repo from plugins in public > assets folder and composer.json file. But the plugins and packages are not all used, so you can see the actual one from layouts > app.blade.php and script.blade.php.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-<h2>How to Install</h2>
-<ul>
-    <li>Make sure you are connected to internet and PHP 8.1 installed.</li>
-    <li>Open your terminal / cmd / powershell to this project and run these commands:
-        <ul>
-            <li>composer install / composer update</li>
-            <li>cp .env.example .env</li>
-            <li>php artisan migrate</li>
-            <li>php artisan db:seed</li>
-        </ul>
-    </li>
-    <li>Setup SMTP Mail Credential (optional)
-        <ul>
-            <li>MAIL_MAILER=</li>
-            <li>MAIL_HOST=</li>
-            <li>MAIL_PORT=</li>
-            <li>MAIL_USERNAME=</li>
-            <li>MAIL_PASSWORD=</li>
-            <li>MAIL_ENCRYPTION=</li>
-            <li>MAIL_FROM_ADDRESS=""</li>
-        </ul>
-    </li>
-</ul>
+## Learning Laravel
 
-<h2>User Login Credential</h2>
-<ul>
-    <li>Admin: email and password; amperakoding@gmail.com</li>
-    <li>Author: email and password; muhazmi@gmail.com</li>
-</ul>
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Do you have another suggestions? Star, fork, and create PR for this repo. Let's make this repo better!
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-<h2>Wanna Work with Me?</h2>
-Let's talk: <a href="mailto: mail@muhazmi.my.id">mail@muhazmi.my.id</a>
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+
+## Laravel Sponsors
+
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+
+### Premium Partners
+
+- **[Vehikl](https://vehikl.com/)**
+- **[Tighten Co.](https://tighten.co)**
+- **[WebReinvent](https://webreinvent.com/)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+- **[Cyber-Duck](https://cyber-duck.co.uk)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Jump24](https://jump24.co.uk)**
+- **[Redberry](https://redberry.international/laravel/)**
+- **[Active Logic](https://activelogic.com)**
+- **[byte5](https://byte5.de)**
+- **[OP.GG](https://op.gg)**
+
+## Contributing
+
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+
+## Code of Conduct
+
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+
+## Security Vulnerabilities
+
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+
+## License
+
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

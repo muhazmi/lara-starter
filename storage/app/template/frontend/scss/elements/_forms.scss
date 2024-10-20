@@ -1,0 +1,286 @@
+/* ----------------------------------------------------------------------
+Forms
+-------------------------------------------------------------------------*/
+.form-control {
+    border: $form-border-width solid $form-border-color;
+    border-radius: $form-border-radius; 
+}
+form {
+    .btn {
+        padding: 12px 14px;
+    }
+}
+
+
+
+input:not([type="checkbox"]):not([type="radio"]),
+select {
+    line-height: 18px;
+    padding: 10px 16px;
+    min-height: 40px;
+    font-size: .9rem;
+}
+
+.input-group-append {
+    margin-left: -4px;
+
+    .btn,
+    button {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+        height: 40px;
+
+        i {
+            margin-right: 0px;
+        }
+    }
+}
+
+.input-group-prepend {
+
+    .btn,
+    button {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+
+        i {
+            margin-right: 0px;
+        }
+    }
+
+    +input {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+}
+
+.input-group {
+    .input-group-btn {
+        margin-left: -4px;
+
+        .btn,
+        button {
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+        }
+    }
+}
+
+.input-group-lg {
+    .btn {
+        padding: 16px 20px;
+        font-size: 14px;
+    }
+}
+
+.input-group-text {
+    border: 0;
+}
+
+.input-group-text i {
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 1.2rem;
+}
+
+.form-group label:not(.error) {
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    margin-bottom: 4px;
+    color: $paragraph-color;
+}
+
+.form-inline button {
+    margin: 0px;
+}
+
+.form-group>label {
+    display: block;
+}
+
+.has-feedback label~.form-control-feedback {
+    top: 44px;
+}
+
+//Error messages
+.is-invalid:not(.form-control) {
+    font-size: .8rem;
+    color: $color-danger;
+}
+
+.is-invalid,
+.is-valid {
+    display: block;
+    clear: both;
+    width: 100%;
+}
+
+ input[type="checkbox"].form-control {
+	float: left;
+	width: auto;
+	margin-right: 13px;
+	height: 24px;
+	cursor: pointer;
+}
+input[type="color"] {
+    width: 100%;
+    height: 100%;
+    min-height: 3px;
+    padding: 0;
+    border: 0px;
+    cursor: pointer;
+
+    &:focus {
+        box-shadow: none;
+    }
+}
+
+/*form select*/
+select.form-control:not([size]):not([multiple]) {
+    height: 40px;
+}
+
+select {
+    width: 100%;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    background-image: url(../images/dropdown-arrow.png) !important;
+    background-repeat: no-repeat !important;
+    background-position: right center !important;
+     border: $form-border-width solid $form-border-color;
+    border-radius: $form-border-radius; 
+}
+
+select[multiple] {
+    background-image: none !important;
+}
+
+.order-select {
+    >h6 {
+        margin-bottom: 0;
+    }
+
+    p {
+        font-size: 13px;
+    }
+}
+
+.button-search {
+    background-color: #fff;
+    border-color: $form-border-color $form-border-color $form-border-color;
+    border-style: solid;
+    border-width: 1px 1px 1px 0 !important;
+    box-shadow: none;
+    margin-left: -6px !important;
+    z-index: 2 !important;
+}
+
+/* ----------------------------------------------------------------------
+ Reservation form
+-------------------------------------------------------------------------*/
+.reservation-form-over {
+    top: -80px;
+    z-index: 10;
+    margin-bottom: -80px;
+    overflow: inherit;
+    background-color: transparent;
+}
+
+.reservation-form {
+    background-color: #fff;
+    border-radius: 3px;
+    border: 1px solid #eee;
+    min-height: 160px;
+    padding: 30px;
+    position: relative;
+    z-index: 9999 !important;
+
+    label {
+        color: #555;
+    }
+
+    input,
+    select {
+        border: 0px;
+        border-radius: 4px;
+        background-color: $color-white;
+        border: $form-border-width solid $form-border-color;
+        width: 100%;
+    }
+
+    .date input {
+        border-radius: 4px 0 0 4px;
+        border-width: 2px 0 2px 2px;
+    }
+
+    .input-group-addon {
+        -moz-border-bottom-colors: none;
+        -moz-border-left-colors: none;
+        -moz-border-right-colors: none;
+        -moz-border-top-colors: none;
+        background-color: #fff !important;
+        border-color: #ddd;
+        border-image: none;
+        border-style: solid;
+        border-width: 2px 2px 2px 0;
+    }
+
+    input,
+    select {
+        color: #555;
+        display: block;
+        font-size: 15px;
+        line-height: 1.42857;
+        padding: 8px 14px;
+        width: 100%;
+    }
+}
+
+/*reservation form style 2*/
+#book {
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 10px solid rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    padding: 40px;
+}
+
+/* Fixes */
+.widget .input-group-text {
+    height: 40px;
+}
+
+.list-group input[type="radio"] {
+    display: none;
+}
+
+.list-group input[type="radio"]+.list-group-item {
+    cursor: pointer;
+}
+
+.list-group input[type="radio"]:checked+.list-group-item {
+    background-color: $background-light;
+}
+
+/* ----------------------------------------------------------------------
+Forms - Dark
+-------------------------------------------------------------------------*/
+.dark {
+    .form-control,
+    input,
+    select,
+    textarea {
+        background-color: #222;
+        border-color: #333;
+        color: $color-white;
+    }
+}
+
+//spinner inside form
+.spinner-loader-inside {
+    margin-left: -30px;
+    margin-top: 6px;
+    z-index: 3;
+}
+

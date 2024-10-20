@@ -1,111 +1,86 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use App\Models\User;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
-use Laravolt\Indonesia\Models\City;
 use App\Http\Controllers\Controller;
+
+use App\Models\User;
+use Illuminate\View\View;
+use Laravolt\Indonesia\Models\City;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\RedirectResponse;
 use Laravolt\Indonesia\Models\Village;
-use Illuminate\Support\Facades\Storage;
 use Laravolt\Indonesia\Models\District;
 use Laravolt\Indonesia\Models\Province;
-use Illuminate\Support\Facades\Redirect;
-use RealRashid\SweetAlert\Facades\Alert;
-use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Requests\UpdateProfileRequest;
 
 class ProfileController extends Controller
 {
-    protected $module;
+    private $module, $product_categories, $tags_navbar;
 
     public function __construct()
     {
-        $this->module = 'Profile';
+        $this->module = __('User');
+    }
+
+    private function getCommonData()
+    {
+        return [
+            'module'                    => $this->module,
+            'product_categories'        => $this->product_categories,
+            'tags_navbar'               => $this->tags_navbar,
+        ];
     }
 
     /**
      * Display the user's profile form.
      */
-    public function show(): View
+    public function edit(): View
     {
+        $user = User::where('id', auth()->user()->id)->firstOrFail();
         $data = [
-            'page_title' => 'Profil',
-        ];
-
-        return view('profile.show', $data);
-    }
-
-    /**
-     * Display the user's profile form.
-     */
-    public function edit(User $user)
-    {
-        $user = auth()->user();
-
-        $data = [
-            'page_title'=> 'Profile Saya',
-            'users'     => $user,
-            'provinces' => Province::orderBy('name')->get(),
-            'cities'    => City::where('province_code', $user->province_id)->orderBy('name')->get(),
-            'districts' => District::where('city_code', $user->city_id)->orderBy('name')->get(),
-            'villages'  => Village::where('district_code', $user->district_id)->orderBy('name')->get(),
-        ];
+            'page_title'    => __('My Profile'),
+            'user'          => $user,
+            'provinces'     => Province::orderBy('name')->get(),
+            'cities'        => City::where('province_code', $user->province_id)->orderBy('name')->get(),
+            'districts'     => District::where('city_code', $user->city_id)->orderBy('name')->get(),
+            'villages'      => Village::where('district_code', $user->district_id)->orderBy('name')->get(),
+        ] + $this->getCommonData();
 
         return view('backend.profile.edit', $data);
     }
 
-    /**
-     * Update the user's profile information.
-     */
-    public function update(ProfileUpdateRequest $request, User $user)
+    public function update(UpdateProfileRequest $request)
     {
-        $user   = auth()->user();
-        $data   = $request->validated();
+        $user = auth()->user();
+        $data = $request->validated();
 
-        if ($request->filled('password')) {
-            $data['password'] = Hash::make($request->password);
-        }
-
-        if ($request->hasFile('profile_image')) {
-            // Menghapus file lama jika ada
-            if ($user->profile_image) {
-                Storage::disk('public')->delete('images/users/' . $user->profile_image);
+        try {
+            $emailChanged = false;
+            if ($request->filled('email') && $user->email !== $request->email) {
+                $data['email_verified_at'] = null;
+                $emailChanged = true;
             }
 
-            $profile_image = $request->file('profile_image');
-            $profile_imageName = now()->format('YmdHis') . '_' . $profile_image->extension();
-            Storage::disk('public')->put('images/users/' . $profile_imageName, file_get_contents($profile_image));
-            $data['profile_image'] = $profile_imageName;
+            if ($request->filled('new_password')) {
+                $data['password'] = Hash::make($request->new_password);
+            } else {
+                unset($data['password']);
+            }
+
+            $user->update($data);
+
+            $message = __('Profile updated successfully.');
+            if ($emailChanged) {
+                $message = __('Profile updated successfully. Please check your new email for verification.');
+                $request->user()->sendEmailVerificationNotification();
+                Auth::logout();
+                return response()->json(['success' => true, 'message' => $message, 'logout' => true]);
+            }
+
+            return response()->json(['success' => true, 'message' => $message]);
+        } catch (\Exception $e) {
+            return response()->json(['success' => false, 'message' => 'Failed to update profile: ' . $e->getMessage()]);
         }
-
-        $user->update($data);
-
-        Alert::success('Success', $this->module . ' updated successfully.');
-        return redirect()->route('profile.edit', ['profile' => $user]);
-    }
-
-    /**
-     * Delete the user's account.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        $request->validateWithBag('userDeletion', [
-            'password' => ['required', 'current_password'],
-        ]);
-
-        $user = $request->user();
-
-        Auth::logout();
-
-        $user->delete();
-
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-
-        return Redirect::to('/');
     }
 }

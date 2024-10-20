@@ -1,0 +1,160 @@
+@import "../variables";
+
+/* ------------------------------------------------------------------------
+    Fonts - Find/Replace your website fonts with your custom font name.
+-------------------------------------------------------------------------*/
+/*Body*/
+body {
+    font-size: 1em;
+    font-family: $font-body;
+}
+
+/*Paragraphs*/
+p {
+    font-family: $font-paragraph;
+}
+
+/*Headings*/
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-family: $font-headings;
+}
+
+/*Main Menu*/
+#mainMenu {
+    nav {
+        >ul {
+            >li {
+                >a {
+                    font-family: $font-menu;
+                    font-size: 12px;
+                    font-weight: 600;
+                    letter-spacing: 0.6px;
+                }
+
+                .dropdown-menu {
+                    >li {
+
+                        >a,
+                        >span,
+                        [class*="col-"]>ul>li>a {
+                            font-family: $font-menu-dropdown;
+                        }
+                    }
+                }
+
+                &.mega-menu-item {
+                    .mega-menu-content {
+                        .mega-menu-title {
+                            font-family: $font-menu;
+                            font-size: 13px;
+                            font-weight: 600;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.header-extras {
+    >ul {
+        >li {
+
+            >a:not(.btn),
+            .topbar-dropdown>.title {
+                font-family: $font-menu;
+                font-size: 12px;
+                font-weight: 700;
+            }
+        }
+    }
+}
+
+/*Page Menu*/
+.page-menu {
+    nav {
+        >ul {
+            >li {
+                font-family: $font-menu;
+
+                .dropdown-menu {
+                    font-family: $font-menu-dropdown;
+                }
+            }
+        }
+    }
+}
+
+/*Sidebar Menu*/
+.sidebar-menu {
+    font-family: $font-menu;
+}
+
+/*Buttons*/
+button,
+a.btn:not([href]):not([tabindex]),
+.btn {
+    font-family: $font-headings;
+}
+
+/*slider*/
+.inspiro-slider {
+    .slide {
+        .slide-captions {
+            .strong {
+                font-family: $slider-font;
+            }
+        }
+    }
+}
+
+/*Page Title*/
+#page-title {
+    .page-title {
+        >h1 {
+            font-family: $page-title-font;
+            font-size: 44px;
+            line-height: 56px;
+            font-weight: 400;
+        }
+    }
+}
+
+/*Footer*/
+#footer {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: $font-headings;
+
+    p {
+        font-family: $font-headings;
+    }
+
+    .widget .widget-title,
+    .widget h4 {
+        font-family: $font-headings;
+        font-size: 14px;
+        letter-spacing: 1px;
+        font-weight: 600;
+
+        ul {
+            li {
+                a {
+                    font-family: $font-headings;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+}

@@ -2,30 +2,31 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>{{ $page_title }} - {{ config('app.name') }}</title>
+    <title>{{ $page_title }} - {{ $companyInfo->name }}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Main Layout -->
-    <link rel="stylesheet" href="{{ asset('assets/template/frontend/dist/css/bootstrap.min.css') }}">
-    <script src="{{ asset('assets/template/frontend/dist/js/bootstrap.bundle.min.js') }}"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('assets/plugins/fontawesome-free/css/all.min.css') }}">
-    {{-- Masonry --}}
-    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.bunny.net">
+    <link href="https://fonts.bunny.net/css?family=inter:400,500,600&display=swap" rel="stylesheet" />
+    <!-- Favicon  -->
+    <link href="{{ asset('assets/images/favicon/' . $companyInfo->favicon) }}" rel="shortcut icon" />
+    <!-- Scripts -->
+    @include('frontend.layouts.script-header')
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="bg-light">
-    <main>
+<body class="bg-gray-50 dark:bg-black">
+    <div class="flex flex-col">
         @include('frontend.layouts.navigation')
 
-        @yield('content')
+        <!-- Main content -->
+        <section class="content">
+            @yield('content')
+        </section><!-- Page Content -->
+    </div>
 
-        @include('frontend.layouts.footer')
-
-        @include('frontend.layouts.script')
-        @yield('script_addon')
-    </main>
+    @include('frontend.layouts.include.footer')
 </body>
 
 </html>

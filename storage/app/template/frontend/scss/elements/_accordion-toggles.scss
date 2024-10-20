@@ -1,0 +1,112 @@
+/* ----------------------------------------------------------------
+	Accordion
+-----------------------------------------------------------------*/
+.accordion {
+	.ac-item {
+		margin-bottom: 10px;
+		padding: 12px 20px;
+		border-radius: 5px;
+		border: 1px solid $border-color;
+
+		.ac-title {
+			font-weight: 500;
+			position: relative;
+			padding-right: 10px;
+			margin: 0;
+			font-size: 1em;
+			cursor: pointer;
+			user-select: none;
+
+			&:before {
+				font-size: 18px;
+				content: "\e9be";
+				font-family: $font-icon;
+				right: 0;
+				position: absolute;
+			}
+
+			>i {
+				margin-right: 8px;
+			}
+		}
+
+		.ac-content {
+			padding-top: 12px;
+
+			>p {
+				&:last-child {
+					margin-bottom: 6px;
+				}
+			}
+		}
+
+		&.ac-active {
+			.ac-title {
+				&:before {
+					content: "\e9a1";
+				}
+			}
+		}
+	}
+
+	&.accordion-shadow {
+		.ac-item {
+			box-shadow: $box-shadow;
+		}
+	}
+
+	&.accordion-simple {
+		.ac-item {
+			padding: 14px 0;
+			margin-bottom: 0;
+			border-radius: 0;
+			border: 0;
+			border-bottom: 1px solid $border-color;
+
+			&:last-child {
+				border: 0;
+			}
+		}
+	}
+
+	&.accordion-flat {
+		.ac-item {
+			padding: 10px 0;
+			margin-bottom: 0;
+			border-radius: 0;
+			border: 0;
+		}
+	}
+
+	&.accordion-theme {
+		.ac-item {
+			background-color: $background-theme;
+			border: 0;
+
+			.ac-title {
+				color: $color-white;
+			}
+
+			.ac-content,
+			.ac-content p {
+				color: $color-white;
+			}
+		}
+	}
+
+	&.dark {
+		.ac-item {
+			background-color: $background-dark;
+			border: 0;
+
+			.ac-title {
+				color: $color-white;
+			}
+
+			.ac-content,
+			.ac-content p {
+				color: $color-white;
+			}
+		}
+	}
+}
