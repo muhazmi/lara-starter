@@ -2,7 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Post;
+use App\Models\User;
+use App\Models\Article;
 use Illuminate\Database\Seeder;
 use Laravolt\Indonesia\Seeds\CitiesSeeder;
 use Laravolt\Indonesia\Seeds\VillagesSeeder;
@@ -17,16 +18,27 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         $this->call([
+            // ESSENTIALS
+            CompanySeeder::class,
             ProvincesSeeder::class,
             CitiesSeeder::class,
             DistrictsSeeder::class,
             VillagesSeeder::class,
-            UserRolePermissionSeeder::class,
-            CategoriesSeeder::class,
-            TagsSeeder::class,
-            NavigationsSeeder::class,
+            PermissionSeeder::class,
+            RoleSeeder::class,
+            UserSeeder::class,
+            MenuSeeder::class,
+            SubMenuSeeder::class,
+            
+            // MASTER
+            CategoryTypeSeeder::class,
+            CategorySeeder::class,
+            
+            // CMS
+            TagSeeder::class,
         ]);
 
-        Post::factory(5)->create();
+        Article::factory()->count(10)->create();
+        $this->call(ArticleTagSeeder::class);
     }
 }

@@ -1,0 +1,87 @@
+// DELETE VARIABLES
+/* ----------------------------------------------------------------------
+    call-to-action (call to action)
+-------------------------------------------------------------------------*/
+.call-to-action {
+    position: relative;
+    overflow: hidden;
+    padding: 46px 50px 34px;
+    margin-bottom: 40px;
+
+    .container {
+        position: relative;
+    }
+
+    h3 {
+        margin-top: 10px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    p {
+        margin-top: 0;
+    }
+
+    a.btn {
+        margin-top: 20px;
+    }
+
+    &.call-to-action-border {
+        background: #fff;
+        border: 1px solid #eee;
+    }
+
+    &.call-to-action-colored {
+        background-color: $color-theme;
+
+        h3,
+        p {
+            color: $color-white;
+        }
+
+        h3 {
+            span {
+                color: $color-white !important;
+            }
+        }
+    }
+
+    &.call-to-action-dark {
+        background-color: $dark;
+
+        h3,
+        p {
+            color: $color-white;
+        }
+    }
+
+    &.cta-center {
+        text-align: center;
+
+        [class*="col-"] {
+            width: 100%;
+            max-width: 100%;
+            flex: none;
+            clear: both;
+            display: block;
+        }
+    }
+
+    &.cta-right {
+        text-align: right;
+
+        [class*="col-"]:first-child {
+            float: right;
+        }
+    }
+}
+
+@include breakpoint-lg(max) {
+    .call-to-action {
+        padding: 26px 12px 18px;
+    }
+
+    [class*="col-"]>.call-to-action {
+        padding: 26px 26px 18px;
+    }
+}

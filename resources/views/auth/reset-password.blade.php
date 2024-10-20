@@ -1,60 +1,39 @@
-@extends('layouts.reset-password')
+<x-guest-layout>
+    <form method="POST" action="{{ route('password.store') }}">
+        @csrf
 
-@section('content')
-    <div class="login-box">
-        <!-- /.login-logo -->
-        <div class="card card-outline card-primary">
-            <div class="card-header text-center">
-                <a href="" class="h1">
-                    <img src="{{ asset('images/general/app-logo.png') }}" height="35" alt="">
-                    <b>{{ config('app.name', 'Laravel') }}</b>
-                </a>
-            </div>
+        <!-- Password Reset Token -->
+        <input type="hidden" name="token" value="{{ $request->route('token') }}">
 
-            <div class="card-body">
-                <x-auth-session-status :status="session('status')" />
-
-                <form method="POST" action="{{ route('password.store') }}">
-                    @csrf
-
-                    <!-- Password Reset Token -->
-                    <input type="hidden" name="token" value="{{ $request->route('token') }}">
-
-                    <!-- Email Address -->
-                    <div class="mb-3">
-                        <x-input-label for="email" :value="__('Email')" />
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                            name="email" value="{{ old('email', $request->email) }}" autofocus>
-                        @if ($errors->has('email'))
-                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                        @endif
-                    </div>
-
-                    <!-- Password -->
-                    <div class="mb-3">
-                        <x-input-label for="password" :value="__('Password Baru')" />
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
-                            name="password">
-                        @if ($errors->has('password'))
-                            <span class="text-danger">{{ $errors->first('password') }}</span>
-                        @endif
-                    </div>
-
-                    <!-- Confirm Password -->
-                    <div class="mb-3">
-                        <x-input-label for="password_confirmation" :value="__('Konfirmasi Password Baru')" />
-                        <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation"
-                            name="password_confirmation" value="{{ old('password_confirmation') }}">
-                        @if ($errors->has('password_confirmation'))
-                            <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
-                        @endif
-                    </div>
-
-                    <button type="submit" class="btn btn-primary"><i class="fa fa-paper-plane"></i> Buat Password baru</button>
-                </form>
-            </div>
-            <!-- /.card-body -->
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-        <!-- /.card -->
-    </div>
-@endsection
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mt-4">
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+            <x-text-input id="password_confirmation" class="block mt-1 w-full"
+                                type="password"
+                                name="password_confirmation" required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            <x-primary-button>
+                {{ __('Reset Password') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>

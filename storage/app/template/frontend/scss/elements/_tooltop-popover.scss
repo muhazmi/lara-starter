@@ -1,0 +1,33 @@
+// Tooltips & Popover
+.popover {
+    border: 1px solid $border-color;
+    border-radius: 6px;
+    box-shadow: $box-shadow;
+}
+
+.popover-header {
+    padding: 18px 20px;
+    background-color: transparent;
+    border-bottom: 1px solid $border-color;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    margin-bottom: 0px !important;
+}
+
+.popover-body {
+    padding: 18px 20px;
+    color: $color-body;
+    font-size: .9rem;
+}
+
+a[data-toggle] {
+    color: $color-body;
+}
+
+.tooltip.left .tooltip-arrow {
+    right: 1px;
+}
+
+.tooltip-inner {
+    white-space: pre-wrap;
+}

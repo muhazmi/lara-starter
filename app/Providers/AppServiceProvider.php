@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\Date;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,17 +12,26 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Register any application services.
      */
-    public function register(): void
-    {
-        //
-    }
+    public function register(): void {}
 
     /**
      * Bootstrap any application services.
      */
     public function boot(): void
     {
-        // Date::setLocale('id'); // id adalah kode bahasa untuk Indonesia
-        Paginator::useBootstrapFive();
+        View::composer('*', function ($view) {
+            $view->with('months', __('months'));
+        });
+
+        // Check if the companies table exists
+        if (Schema::hasTable('companies')) {
+            $companyInfo = Cache::remember('companyInfo', 60, function () {
+                return \App\Models\Company::find(1); // Sesuaikan query jika perlu
+            });
+            view()->share('companyInfo', $companyInfo);
+        } else {
+            view()->share('companyInfo', null);
+        }
+
     }
 }

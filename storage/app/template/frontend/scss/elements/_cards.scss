@@ -1,0 +1,54 @@
+//	Cards
+.card {
+	border: 1px solid $border-color;
+	border-radius: $border-radius;
+	background-color: $color-white;
+	margin-bottom: 20px;
+	box-shadow: 0 0 35px 0 rgba(154, 161, 171, 0.15);
+
+	.card-header {
+		background-color: $color-white;
+		border-bottom: 1px solid $border-color;
+		font-weight: 600;
+		padding: 1.8rem 2rem;
+
+		p:last-child {
+			margin-bottom: 0;
+		}
+
+		.card-title {
+			font-size: 1.35714286em;
+			line-height: 1.68421053em;
+			font-weight: 500;
+		}
+
+		.card-subtitle {
+			font-size: 1rem;
+			font-style: normal;
+			font-weight: 400;
+			color: $color-body;
+		}
+	}
+
+	.card-header-title {
+		font-size: 16px;
+		line-height: 23px;
+		margin-bottom: 0px;
+		font-weight: 600;
+	}
+
+	.card-body {
+		padding: 1.8rem 2rem;
+	}
+
+	.card-body-title {
+		font-size: 18px;
+		line-height: 26px;
+		font-weight: 600;
+	}
+
+	.card-footer {
+		background-color: $color-white;
+		border-top: 1px solid $border-color;
+	}
+}

@@ -1,43 +1,49 @@
 <!-- jQuery -->
-<script src="{{ asset('assets/plugins/jquery/jquery.min.js') }}"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="{{ asset('assets/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ asset('assets/plugins/jquery/jquery3.7.1.min.js') }}"></script>
+<!-- Moment -->
+<script type="text/javascript" src="{{ asset('assets/plugins/moment/moment.min.js') }}"></script>
 <!-- Sweetalert -->
 <script src="{{ asset('assets/plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const successMessage = "{{ session('success') }}";
+        const errorMessage = "{{ session('error') }}";
+
+        if (successMessage) {
+            Swal.fire({
+                title: '{{ __('Success!') }}',
+                text: successMessage,
+                icon: 'success',
+                timer: 3000,
+                timerProgressBar: true,
+            });
+        }
+
+        if (errorMessage) {
+            Swal.fire({
+                title: 'Oops...',
+                text: errorMessage,
+                icon: 'error',
+                timer: 3000,
+                timerProgressBar: true,
+            });
+        }
+    });
+
     function showLoading() {
         Swal.fire({
-            title: 'Please wait...',
-            html: '<div class="spinner-border text-primary" role="status"><span class="visually-hidden"></span></div><p class="text-danger">Your request is still processed, please don`t refresh this page!</p>',
+            title: 'Loading...',
+            text: 'Please wait.',
+            backdrop: true,
             allowOutsideClick: false,
             allowEscapeKey: false,
             showConfirmButton: false,
-            onBeforeOpen: () => {
-                Swal.showLoading();
-            },
+            didOpen: () => {
+                Swal.showLoading(); // This activates SweetAlert's native loading animation
+            }
         });
     }
-
-    $(document).on("submit", ".delete-data", function(e) {
-        e.preventDefault();
-        const url = $(this).attr("href");
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "Data will be deleted permanently!",
-            icon: 'warning',
-            timer: 3000,
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!',
-            cancelButtonText: 'Cancel'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                showLoading();
-                e.currentTarget.submit();
-            }
-        })
-    });
 </script>
-@include('sweetalert::alert')
+
+@yield('script_addon_footer')

@@ -1,0 +1,679 @@
+/***********************************************************************
+**         POLO Html5 Template		   								                  **
+**         Author: INSPIRO MEDIA								                      **
+**		     URL: //www.inspiro-media.com	                        **
+**         Note: You should add dir=ltr on the index.html page        **
+************************************************************************/
+
+
+html {
+  direction: rtl
+}
+
+
+body {
+  text-align: right;
+}
+
+
+caption {
+    text-align: right;
+}
+
+[type=email],
+[type=file],
+[type=number],
+[type=password],
+[type=tel],
+[type=url],
+code,
+samp,
+var {
+  text-align: left;
+  direction: ltr
+}
+
+
+/*Floats*/
+
+.float-right {
+  float: left !important;
+}
+
+.float-left {
+  float: right !important;
+}
+
+.float-none {
+  float: none !important;
+}
+
+.text-right {
+  text-align: left !important;
+}
+
+.text-left {
+  text-align: right !important;
+}
+
+
+.right {
+  float: left !important;
+}
+
+.left {
+  float: right !important;
+}
+
+
+/* ----------------------------------------------------------------
+	Header
+-----------------------------------------------------------------*/
+.header-logo-center #mainMenu nav > ul:last-child, .menu-split #mainMenu nav > ul:last-child {
+	float: left;
+}
+.header-logo-center #mainMenu nav > ul:first-child, .menu-split #mainMenu nav > ul:first-child {
+	float: right;
+}
+
+#header .header-inner #logo,
+#mainMenu nav>ul>li {
+  float: right;
+}
+
+@media (min-width: 1025px) {
+  #header .header-extras,
+  #header:not(.header-logo-center):not(.menu-split) #mainMenu {
+	  float: left;
+  } 
+}
+
+
+#mainMenu nav>ul>li .dropdown-menu>li>a,
+#mainMenu nav>ul>li .dropdown-menu>li>span,
+#mainMenu nav>ul>li .dropdown-menu>li [class*="col-"]>ul>li>a {
+  text-align: right;
+}
+
+#mainMenu nav>ul>li .dropdown-submenu:before {
+  left: 16px;
+  right: auto;
+  transform: rotate(180deg);
+}
+
+#mainMenu nav>ul>li .dropdown-submenu:not(.hover-active):hover:before {
+  left: 12px;
+  right: auto;
+}
+
+#mainMenu nav>ul>li .dropdown-submenu>.dropdown-menu {
+  right: 100%;
+  left: auto
+}
+
+#mainMenu nav>ul>li .dropdown-submenu>.dropdown-menu.menu-invert {
+  right: auto;
+  left: 100%;
+}
+
+@media (max-width: 1024px) {
+
+  #mainMenu:not(.menu-overlay)>.container {
+    left: 0px;
+    text-align: right !important;
+    width: 100%;
+    max-width: 100%
+  }
+
+  #mainMenu:not(.menu-overlay) nav>ul>li.dropdown::before {
+    left:20px;
+    right: auto;
+  }
+
+  #mainMenu nav > ul > li .dropdown-arrow {
+    left: 0px;
+    right: auto;
+  }
+
+  #mainMenu:not(.menu-overlay) nav>ul li>.dropdown-menu>.dropdown-submenu::before {
+    left: 10px;
+    right: auto;
+  }
+
+}
+
+.header-extras .p-dropdown .p-dropdown-content,
+.header-extras .p-dropdown ul.p-dropdown-content {
+  right: auto;
+  left: -28px;
+}
+
+#header[data-fullwidth="true"] #mainMenu:not(.menu-left):not(.menu-center) nav>ul>li.mega-menu-item>.dropdown-menu {
+  left: 0;
+  right: auto;
+}
+
+.dropdown-menu {
+  text-align: right;
+}
+
+/*Topbar*/
+
+.topbar-dropdown {
+  float: right;
+}
+
+.topbar-dropdown.float-right {
+  float: left !important;
+}
+
+
+#topbar .social-icons {
+  float: left;
+}
+
+#topbar:not(.topbar-transparent) .social-icons li a {
+  border-right: 0;
+  border-left: 1px solid rgba(180, 180, 180, 0.2);
+}
+
+#topbar:not(.topbar-transparent) .social-icons li:last-child a {
+  border-right: 1px solid rgba(180, 180, 180, 0.2);
+}
+
+#topbar:not(.topbar-transparent) .social-icons li:first-child a {
+  border-right: 0;
+}
+
+#topbar .top-menu {
+  float: right;
+}
+
+#topbar .top-menu>li>a {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+/* ----------------------------------------------------------------
+	Inspiro Slider
+-----------------------------------------------------------------*/
+.inspiro-slider .slide .slide-captions {
+	text-align: right;
+}
+
+.inspiro-slider .slide-captions.text-left {
+  text-align: right !important;
+}
+
+.inspiro-slider .slide-captions.text-right {
+  text-align: left !important;
+}
+
+/* forms */
+select {
+  background-position: left center !important;
+}
+
+.input-group-append .btn,
+.input-group-append button {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+}
+
+.input-group > .input-group-append > .btn, .input-group > .input-group-append > .input-group-text, .input-group > .input-group-prepend:first-child > .btn:not(:first-child), .input-group > .input-group-prepend:first-child > .input-group-text:not(:first-child), .input-group > .input-group-prepend:not(:first-child) > .btn, .input-group > .input-group-prepend:not(:first-child) > .input-group-text {
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.input-group > .input-group-append:last-child > .btn:not(:last-child):not(.dropdown-toggle), .input-group > .input-group-append:last-child > .input-group-text:not(:last-child), .input-group > .input-group-append:not(:last-child) > .btn, .input-group > .input-group-append:not(:last-child) > .input-group-text, .input-group > .input-group-prepend > .btn, .input-group > .input-group-prepend > .input-group-text {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 4px;
+	border-top-right-radius: 4px;
+}
+
+.input-group-prepend + input {border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.input-group > .form-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+	border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+  
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
+}
+
+.input-group > .form-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+.input-group-append {
+	margin-right: -2px;
+	margin-left: 0px;
+}
+
+.form-check-input {
+  margin-right: -1.25rem;
+  margin-left: 0;
+}
+.form-check {
+	padding-left: 0;
+	padding-right: 1.25rem;
+}
+
+/* ----------------------------------------------------------------
+    Page title and breadcrumb
+-----------------------------------------------------------------*/
+.breadcrumb {
+  text-align: right;
+}
+
+.breadcrumb ul .breadcrumb-item+.breadcrumb-item::before,
+.breadcrumb ul .breadcrumb-item+li::before,
+.breadcrumb ul li+.breadcrumb-item::before,
+.breadcrumb ul li+li::before,
+.breadcrumb ol .breadcrumb-item+.breadcrumb-item::before,
+.breadcrumb ol .breadcrumb-item+li::before,
+.breadcrumb ol li+.breadcrumb-item::before,
+.breadcrumb ol li+li::before {
+  display: none;
+}
+
+.breadcrumb ul li+li::after,
+.breadcrumb ol li+li::after {
+  content: "\e92f";
+  font-family: inspiro-icons;
+  margin: 0 5px;
+}
+
+/* ----------------------------------------------------------------------
+	ICON BOX
+-------------------------------------------------------------------------*/
+
+/*small size*/
+.icon-box.small:not(.center)>h3,
+.icon-box.small:not(.center)>h4 {
+  margin: 0 60px 4px 12px;
+}
+
+.icon-box.small:not(.center)>p {
+  margin: 0 60px 20px 0;
+}
+
+/*medium size*/
+.icon-box.medium:not(.center)>h3,
+.icon-box.medium:not(.center)>h4 {
+  margin: 0px 84px 10px 10px;
+}
+
+.icon-box.medium:not(.center)>p {
+  margin: 0 84px 20px 0;
+}
+
+/*large size */
+.icon-box.large:not(.center)>h3,
+.icon-box.large:not(.center)>h4 {
+  margin: 0 110px 10px 12px;
+}
+
+.icon-box.large:not(.center)>p {
+  margin: 0 110px 20px 0;
+}
+
+
+
+/* Icon Box - box type */
+
+.icon-box.box-type {
+  padding: 20px;
+}
+
+.icon-box.box-type .icon {
+  margin-top: 20px;
+}
+
+
+.icon-box.box-type .icon>i {
+  -ms-transform: rotate(180deg);
+  /* IE 9 */
+  -webkit-transform: rotate(180deg);
+  /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+}
+
+
+.icon-box.box-type h3 {
+  margin: 0 83px 10px 12px;
+}
+
+.icon-box.box-type p {
+  margin: 0 83px 20px 0
+}
+
+/* ----------------------------------------------------------------------
+	Buttons
+-------------------------------------------------------------------------*/
+.btn {
+  margin-left: 8px;
+  margin-right: 0px;
+}
+
+.modal-header .close {
+  left: 8px;
+  top: 18px;
+  right: auto;
+}
+
+/* ----------------------------------------------------------------------
+  pie-chart
+-------------------------------------------------------------------------*/
+
+.pie-chart span.percent:after {
+  content: none;
+}
+
+.pie-chart span.percent:before {
+  content: "%";
+}
+
+
+
+/* ----------------------------------------------------------------
+	Content
+-----------------------------------------------------------------*/
+.post-meta div {
+  border-left: none;
+  border-right: 0 none;
+  float: right;
+  margin-left: 18px;
+  margin-right: 0;
+  padding: 8px 0 8px 18px;
+}
+
+.post-thumbnail-entry {
+  float: none;
+}
+
+
+.post-thumbnail-list .post-thumbnail-entry img+.post-thumbnail-content {
+  padding-left: 0;
+  padding-right: 100px;
+}
+
+.sidebar .widget .post-thumbnail-list .post-thumbnail-entry img+.post-thumbnail-content {
+  padding-left: 0;
+}
+
+.post-thumbnail-list .post-thumbnail-entry>img {
+  float: right;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+
+.post-thumbnail .post-image,
+.post-thumbnail .post-video,
+.post-thumbnail .post-audio,
+.post-thumbnail .post-embed,
+.post-thumbnail .post-slider {
+  float: right;
+  width: 40%;
+}
+
+.post-thumbnail .post-content-details {
+  width: 60%;
+  padding-right: 20px;
+  padding-left: 0;
+  float: right;
+}
+
+.post-thumbnail .post-meta {
+  float: left;
+  padding-right: 20px;
+  padding-left: 0;
+  width: 60%;
+}
+
+.post-modern.post-thumbnail .post-meta {
+  float: right;
+  padding-right: 10px;
+  padding-left: 0;
+}
+
+
+/* ----------------------------------------------------------------------
+  Portfolio
+-------------------------------------------------------------------------*/
+.portfolio-item .portfolio-date a,
+.portfolio-item .portfolio-item .portfolio-date i {
+  margin-left: 5px;
+}
+
+.portfolio-item p i .fa-tag:before {
+  margin-left: 8px;
+}
+
+.portfolio-item .portfolio-description p {
+  float: right;
+}
+
+.pricing-table ul li i:before {
+  margin-left: 10px;
+}
+
+.filter-active-title {
+  float: left;
+}
+
+.portfolio-attributes .attribute {
+  text-align: right;
+}
+
+.accordion .ac-item .ac-title {
+  padding-left: 0px;
+  padding-right: 0;
+}
+
+.accordion .ac-item .ac-title::before {
+  right: auto;
+  left: 0;
+}
+
+.accordion .ac-item .ac-title>i {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+/* progres bar */
+
+.p-progress-bar .progress-number,
+.p-progress-bar .progress-type,
+.progress-bar .progress-number,
+.progress-bar .progress-type {
+  float: left;
+}
+
+.p-progress-bar-container.title-up .p-progress-bar .progress-number,
+.p-progress-bar-container.title-up .p-progress-bar .progress-type,
+.p-progress-bar-container.title-up .progress-bar .progress-number,
+.p-progress-bar-container.title-up .progress-bar .progress-type,
+.progress-bar-container.title-up .p-progress-bar .progress-number,
+.progress-bar-container.title-up .p-progress-bar .progress-type,
+.progress-bar-container.title-up .progress-bar .progress-number,
+.progress-bar-container.title-up .progress-bar .progress-type {
+  right: auto;
+  left: 15px;
+}
+
+.p-progress-bar-container.title-up .p-progress-bar .progress-number,
+.p-progress-bar-container.title-up .progress-bar .progress-number,
+.progress-bar-container.title-up .p-progress-bar .progress-number,
+.progress-bar-container.title-up .progress-bar .progress-number {
+  left: 26px;
+  right: auto;
+}
+
+/* ----------------------------------------------------------------------
+Lists
+-------------------------------------------------------------------------*/
+.widget-tweeter li:before,
+.widget-twitter li:before {
+  margin-left: 0x;
+  margin-right: -20px;
+  position: absolute;
+  font-family: "Font Awesome 5 Free";
+  content: "\f099";
+
+}
+
+/*Timeline*/
+
+.timeline .timeline-item {
+  margin: 3rem 5rem 3rem 2rem;
+}
+
+.timeline .timeline-item .timeline-icon {
+  right: 0px;
+  left: auto;
+}
+
+.timeline::before {
+  left: auto;
+  right: 16px;
+}
+
+
+/* ----------------------------------------------------------------------
+  Shop
+-------------------------------------------------------------------------*/
+.product .product-rate {
+  float: right;
+}
+
+.product .product-price {
+  text-align: left;
+  float: left;
+}
+
+.product .product-reviews {
+  float: left;
+}
+
+.product-size li {
+  float: right;
+  margin: 0 0 0 6px;
+}
+
+form a small {
+  margin-top: 10px;
+  float: left !important;
+}
+
+
+
+
+.widget-shop .product .product-image {
+  float: right;
+  padding-left: 10px;
+  padding-right: 0;
+}
+
+/* Extras */
+.mfp-content {
+  text-align: right;
+}
+
+.input-group .input-group-btn .btn,
+.input-group .input-group-btn button {
+  border-top-left-radius: 4px !important;
+  border-bottom-left-radius: 4px !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.input-group>.form-select:not(:last-child),
+.input-group>.form-control:not(:last-child) {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+
+.list-icon li {
+  margin-right: 20px;
+  margin-left: 0;
+}
+
+.list-icon li::before {
+  margin-left: 0;
+  margin-right: -20px;
+}
+
+.list-icon i {
+  margin-left: 14px;
+  margin-right: -20px;
+}
+
+.tabs .nav-tabs .nav-link i {
+  margin-right: 0;
+  margin-left: 6px;
+}
+
+.social-icons li {
+  float: right;
+}
+
+
+.p-dropdown {
+  float: right;
+}
+
+.p-dropdown.p-dropdown-invert .p-dropdown-content,
+.p-dropdown.p-dropdown-invert ul.p-dropdown-content {
+  left: 0;
+  right: auto;
+}
+
+.p-dropdown .p-dropdown-content,
+.p-dropdown ul.p-dropdown-content {
+  text-align: right;
+}
+
+.p-dropdown .p-dropdown-content ul>li a i,
+.p-dropdown .p-dropdown-content>li a i,
+.p-dropdown ul.p-dropdown-content ul>li a i,
+.p-dropdown ul.p-dropdown-content>li a i {
+  margin-left: 6px;
+  margin-right: 0px;
+}
+
+
+.icon-set-container .icon-preview .icon-class {
+  padding-left: 0px;
+  padding-right: 50px;
+}
+
+.icon-set-container .row>[class^="col-"] {
+  flex: 1 1 calc(20% - 19px);
+}
+
+
+#scrollTop {
+  left: 26px;
+  right: auto;
+}
+
+.alert .close{
+  left: 10px !important;
+  right: auto !important;
+  top: 0px !important;
+}

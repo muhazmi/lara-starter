@@ -1,35 +1,31 @@
 <h1>LaraStarter</h1>
-LaraStarter is Laravel v10 starter template with AdminLTE 3 and Bootstrap 5. 
-
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/a0b50847-0c56-45ca-8344-4cbcec9707c9)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/92cb9b0b-ca65-41a0-b63d-1e9856c686ab)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/0754c01b-53ec-42a2-9c05-54fa7c5222e1)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/4f4d11a1-1b0d-4b58-891f-d966a9fe6b61)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/fc80ce1a-390d-4224-9346-7f764eeddf50)
-![image](https://github.com/muhazmi/lara-starter/assets/22718017/c82315bd-9fff-4c23-ba3d-abf139d24fe1)
+LaraStarter is Laravel v11 starter template with TailwindCSS (frontend) and AdminLTE 3 (backend). 
 
 <h2>Features</h2>
 <ul>
-    <li>Laravel Breeze (Blade)</li>
-    <li>Spatie Permission v6 with multi role</li>
-    <li>Indonesian Region by Laravolt include: Province, City, District, Village</li>
-    <li>Dashboard Admin: CRUD Post, Category, Tag, User, Navigation, Permission, Role</li>
-    <li>Dashboard Author: CRUD Post, Edit Profile</li>
+  <li>CRUD CMS (Article and Tag)</li>
+  <li>Master (Users, Category, Category Type)</li>
+  <li>Setting (Company Info, Roles, Permission, Menu, SubMenu)</li>
+  <li>Other (Backup Database, Logs)</li>
 </ul>
 
-<h3>Layout</h3>
-Frontend: Bootstrap 5, Backend: AdminLTE 3
-
-<h3>Packages</h3>
+<h2>Packages</h2>
 <ul>
-    <li>Yajra Datatable</li>
-    <li>SweetAlert</li>
-    <li>Select2</li>
-    <li>Bootstrap Datepicker</li>
-    <li>Fontawesome 6</li>
+    <li><a href="https://laravel.com/docs/11.x/starter-kits#laravel-breeze">Laravel Breeze (Blade & Alpine.js)</a></li>
+    <li><a href="https://spatie.be/docs/laravel-permission/v6/introduction">Spatie Permission</a></li>
+    <li><a href="https://spatie.be/docs/laravel-activitylog/v4/introduction">Laravel Spatie Permission Activity Logs</a></li>
+    <li><a href="https://github.com/laravolt/indonesia">Indonesian Region by Laravolt include: Province, City, District, Village</a></li>
+    <li><a href="https://yajrabox.com/docs/laravel-datatables">Yajra Datatable</a></li>
+    <li><a href="https://realrashid.github.io/sweet-alert/">SweetAlert</a></li>
+    <li><a href="https://select2.org/">Select2</a></li>
+    <li><a href="https://bootstrap-datepicker.readthedocs.io/en/latest/">Bootstrap Datepicker</a></li>
+    <li><a href="https://fontawesome.com/">Fontawesome 6</a></li>
 </ul>
 
-Or you can see all package that i've used in this repo from plugins in public > assets folder and composer.json file. But the plugins and packages are not all used, so you can see the actual one from layouts > app.blade.php and script.blade.php.
+<h2>Layout</h2>
+Frontend: TailwindCSS with <a href="https://flowbite.com/">Flowbite UI Component</a>
+
+Backend: <a href="https://adminlte.io/themes/v3">AdminLTE 3</a>
 
 <h2>How to Install</h2>
 <ul>
@@ -38,6 +34,7 @@ Or you can see all package that i've used in this repo from plugins in public > 
         <ul>
             <li>composer install / composer update</li>
             <li>cp .env.example .env</li>
+            <li>php artisan key:generate</li>
             <li>php artisan migrate</li>
             <li>php artisan db:seed</li>
         </ul>
@@ -55,13 +52,16 @@ Or you can see all package that i've used in this repo from plugins in public > 
     </li>
 </ul>
 
-<h2>User Login Credential</h2>
+<h2>How to Login</h2>
 <ul>
-    <li>Admin: email and password; amperakoding@gmail.com</li>
-    <li>Author: email and password; muhazmi@gmail.com</li>
+    <li>SuperAdmin: email and password; superadmin@gmail.com</li>
+    <li>Admin: email and password; admin@gmail.com</li>
 </ul>
+
+<h2>Localization</h2>
+You can choose between Bahasa Indonesia or English with set APP_LOCALE in .env file with value ID or EN
 
 Do you have another suggestions? Star, fork, and create PR for this repo. Let's make this repo better!
 
 <h2>Wanna Work with Me?</h2>
-Let's talk: <a href="mailto: mail@muhazmi.my.id">mail@muhazmi.my.id</a>
+Let's talk: <a href="mailto: amperakoding@gmail.com">amperakoding@gmail.com</a>

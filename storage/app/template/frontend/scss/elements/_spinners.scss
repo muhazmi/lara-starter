@@ -1,0 +1,188 @@
+.spinners {
+  position: relative;
+
+  &:before {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-top: 2px solid #07d;
+    border-right: 2px solid transparent;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-animation: spinner-rotate .6s linear infinite;
+    -moz-animation: spinner-rotate .6s linear infinite;
+    -ms-animation: spinner-rotate .6s linear infinite;
+    -o-animation: spinner-rotate .6s linear infinite;
+    animation: spinner-rotate 0.6s linear infinite;
+    width: 1.4rem;
+    height: 1.4rem;
+    margin-top: -.7rem;
+    margin-left: -.7rem;
+    border-top-width: 2px;
+    border-right-width: 2px;
+  }
+
+  &.spinners--xl:before {
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-top: -1.6rem;
+    margin-left: -1.6rem;
+    border-top-width: 5px;
+    border-right-width: 5px;
+  }
+
+  &.spinners--lg:before {
+    width: 2rem;
+    height: 2rem;
+    margin-top: -1rem;
+    margin-left: -1rem;
+    border-top-width: 3px;
+    border-right-width: 3px;
+  }
+
+  &.spinners--sm:before {
+    width: 1rem;
+    height: 1rem;
+    margin-top: -.5rem;
+    margin-left: -.5rem;
+    border-top-width: 1px;
+    border-right-width: 1px;
+  }
+
+  &.spinners--right {
+    &:before {
+      left: auto;
+      right: 0.7rem;
+    }
+
+    &.spinners--lg:before {
+      right: 1rem;
+    }
+
+    &.spinners--sm:before {
+      right: 0.5rem;
+    }
+
+    &.btn {
+      padding-right: 3.1rem;
+
+      &.spinners--lg {
+        padding-right: 4.5rem;
+      }
+
+      &.spinners--sm {
+        padding-right: 2.25rem;
+      }
+    }
+  }
+
+  &.spinners--left {
+    &:before {
+      left: 1.4rem;
+    }
+
+    &.spinners--lg:before {
+      left: 2rem;
+    }
+
+    &.spinners--sm:before {
+      left: 1rem;
+    }
+
+    &.btn {
+      padding-left: 3.1rem;
+
+      &.spinners--lg {
+        padding-left: 4.5rem;
+      }
+
+      &.spinners--sm {
+        padding-left: 2.25rem;
+      }
+    }
+  }
+
+  &:before {
+    border-top-color: #dfe2ea;
+  }
+
+  &.spinners--skin-dark:before {
+    border-top-color: #acafba;
+  }
+
+  &.spinners--brand:before {
+    border-top-color: #716aca;
+  }
+
+  &.spinners--metal:before {
+    border-top-color: #c4c5d6;
+  }
+
+  &.spinners--light:before {
+    border-top-color: #fff;
+  }
+
+  &.spinners--accent:before {
+    border-top-color: #00c5dc;
+  }
+
+  &.spinners--focus:before {
+    border-top-color: #9816f4;
+  }
+
+  &.spinners--primary:before {
+    border-top-color: #5867dd;
+  }
+
+  &.spinners--success:before {
+    border-top-color: #34bfa3;
+  }
+
+  &.spinners--info:before {
+    border-top-color: #36a3f7;
+  }
+
+  &.spinners--warning:before {
+    border-top-color: #ffb822;
+  }
+
+  &.spinners--danger:before {
+    border-top-color: #f4516c;
+  }
+}
+
+@media screen and (-ms-high-contrast: active),
+(-ms-high-contrast: none) {
+  .spinners:before {
+    animation: none !important;
+  }
+}
+
+@-webkit-keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-moz-keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@-o-keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinner-rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

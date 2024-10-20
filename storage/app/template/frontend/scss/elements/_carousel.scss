@@ -1,0 +1,472 @@
+/* ----------------------------------------------------------------
+Carousels
+-----------------------------------------------------------------*/
+.flickity-viewport {
+    overflow: hidden !important;
+}
+
+.flickity-slider>div>img,
+.carousel .polo-carousel-item img {
+    width: 100%;
+}
+
+.carousel[data-auto-width="true"],
+.carousel.custom-height {
+
+    .flickity-slider>div>img,
+    .carousel .polo-carousel-item img {
+        height: 100%;
+        width: auto;
+    }
+}
+
+.flickity-enabled {
+    position: relative;
+
+    &:focus {
+        outline: none;
+    }
+}
+
+.flickity-viewport {
+    overflow: hidden;
+    position: relative;
+    height: 100%;
+}
+
+.flickity-slider {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+/* draggable */
+.flickity-enabled.is-draggable {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    .flickity-viewport {
+        cursor: move;
+        cursor: -webkit-grab;
+        cursor: grab;
+
+        &.is-pointer-down {
+            cursor: -webkit-grabbing;
+            cursor: grabbing;
+        }
+    }
+}
+
+/* flickity-fade */
+.flickity-enabled.is-fade .flickity-slider>* {
+    pointer-events: none;
+    z-index: 0;
+}
+
+.flickity-enabled.is-fade .flickity-slider>.is-selected {
+    pointer-events: auto;
+    z-index: 1;
+}
+
+/* ---- flickity-button ---- */
+.flickity-button {
+    background: $background-white;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: -23px 0 0;
+    display: block;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    cursor: pointer;
+    text-align: center;
+    transition: all .2s ease 0s;
+    color: $color-dark;
+    text-align: center;
+    z-index: 200;
+    border: 0;
+    box-sizing: initial;
+    opacity: 0;
+    border-radius: 50%;
+    box-shadow: 0 0px 15px rgba(0, 0, 0, .10);
+
+    &:before {
+        color: $dark;
+    }
+
+    &:hover {
+        background-color: $color-theme;
+
+        &:before {
+            color: $color-white;
+        }
+    }
+
+    &.next,
+    &.previous {
+        &:before {
+            font-size: 25px;
+            font-family: inspiro-icons !important;
+        }
+    }
+
+    &.next {
+        right: 0px;
+
+        &:before {
+            margin-left: 4px;
+            content: "\e930";
+        }
+
+        &.disabled {
+            opacity: 0;
+        }
+    }
+
+    &.previous {
+        left: 0px;
+
+        &:before {
+            content: "\e92f";
+            margin-right: 2px;
+        }
+
+        &.disabled {
+            opacity: 0;
+        }
+    }
+
+    svg {
+        display: none !important;
+    }
+}
+
+.inspiro-slider,
+.carousel {
+    &:hover {
+        .flickity-button {
+            &.next {
+                left: auto;
+                right: 10px;
+                opacity: 1;
+
+                &.disabled {
+                    opacity: 0;
+                }
+            }
+
+            &.previous {
+                right: auto;
+                left: 10px;
+                opacity: 1;
+
+                &.disabled {
+                    opacity: 0;
+                }
+            }
+        }
+    }
+
+    &.arrows-dark {
+        .flickity-button {
+            color: $color-dark;
+
+            &:hover {
+                background-color: $color-theme;
+
+                &:before {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    &.arrows-grey {
+        .flickity-button {
+            color: $color-grey;
+
+            &:hover {
+                background-color: $color-theme;
+
+                &:before {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    &.arrows-only {
+        .flickity-button {
+            background-color: transparent;
+            color: $color-white;
+            box-shadow: none;
+
+            &:hover {
+                background-color: transparent;
+                ;
+
+                &:before {
+                    color: $color-white;
+                }
+            }
+        }
+    }
+
+    &.arrows-visibile {
+        .flickity-button {
+            &.next {
+                left: auto;
+                right: 10px;
+                opacity: 1;
+            }
+
+            &.previous {
+                right: auto;
+                left: 10px;
+                opacity: 1;
+            }
+        }
+    }
+
+    .portfolio-item {
+        padding-bottom: 0;
+    }
+}
+
+.polo-carousel-item {
+    &.is-selected {
+        z-index: 2;
+    }
+}
+
+.flickity-button-icon {
+    fill: currentColor;
+}
+
+/* ----------------------------------------------------------------
+Carousel: Dots
+-----------------------------------------------------------------*/
+.flickity-page-dots {
+    position: absolute;
+    width: 100%;
+    bottom: -25px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    text-align: center;
+    line-height: 1;
+    z-index: 3;
+    height: 10px;
+
+    .dot {
+        display: inline-block;
+        position: relative;
+        margin: 0 4px;
+        width: 10px;
+        height: 10px;
+        cursor: pointer;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: transparent;
+        box-shadow: inset 0 0 0 2px $silver;
+        transition: background 0.8s ease;
+
+        &:after {
+            outline: medium none;
+            text-indent: -999em;
+            border-radius: 50%;
+            overflow: hidden;
+            content: '';
+            position: absolute;
+            bottom: 0;
+            height: 0;
+            left: 0;
+            width: 100%;
+            background-color: $silver;
+            box-shadow: 0 0 1px $silver;
+            transition: height 0.3s ease;
+        }
+
+        &.is-selected {
+            &:after {
+                height: 100%;
+            }
+        }
+    }
+}
+
+.inspiro-slider,
+.carousel {
+
+    /* dots inside */
+    &.dots-inside {
+        .flickity-page-dots {
+            bottom: 20px;
+            position: absolute;
+        }
+    }
+
+    /* dots top */
+    &.dots-inside-top {
+        .flickity-page-dots {
+            top: 20px;
+        }
+    }
+
+    &.dots-outside-top {
+        .flickity-page-dots {
+            top: -46px;
+        }
+    }
+
+    /* dots light */
+    &.dots-light {
+        .flickity-page-dots {
+            .dot {
+                box-shadow: inset 0 0 0 2px $color-white;
+
+                &:after {
+                    background-color: $color-white;
+                    box-shadow: 0 0 1px $color-white;
+                }
+            }
+        }
+    }
+
+    /* dots dark */
+    &.dots-dark {
+        .flickity-page-dots {
+            .dot {
+                box-shadow: inset 0 0 0 2px $color-dark;
+
+                &:after {
+                    background-color: $color-dark;
+                }
+            }
+        }
+    }
+
+    /* dots grey */
+    &.dots-grey {
+        .flickity-page-dots {
+            .dot {
+                box-shadow: inset 0 0 0 2px $dark-light;
+
+                &:after {
+                    background-color: $dark-light;
+                }
+            }
+        }
+    }
+
+    &.dots-creative {
+        .flickity-page-dots {
+            .dot {
+                opacity: 0.5;
+                box-shadow: none;
+                border-radius: 0;
+                background-color: $color-white;
+                height: 4px;
+                width: 30px;
+
+                &:after {
+                    background-color: $color-white;
+                    box-shadow: none;
+                }
+
+                &:hover {
+                    opacity: 0.6;
+                }
+
+                &.is-selected {
+                    opacity: 1;
+                }
+            }
+        }
+
+        &.dots-dark {
+            .flickity-page-dots {
+                .dot {
+                    background-color: $color-dark;
+
+                    &:after {
+                        background-color: $color-dark;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.flickity-rtl .flickity-page-dots {
+    direction: rtl;
+}
+
+.carousel-promotion {
+    .owl-stage-outer {
+        overflow: unset !important;
+
+        .polo-carousel-item {
+            opacity: .3;
+            transition: opacity 400ms ease;
+
+            &.active {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+/* Owl Carousel - Settings
+-----------------------------------------------------------------*/
+.carousel {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .3s ease;
+
+    &.carousel-loaded {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+.item-video {
+    position: relative;
+    width: 100%;
+    height: 400px;
+
+    iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+    }
+}
+
+/* ----------------------------------------------------------------
+    Responsive Classes
+-----------------------------------------------------------------*/
+@include breakpoint-lg(max) {
+    .carousel {
+        .flickity-button {
+            width: 40px;
+            &.next,
+            &.next:hover {
+                right: 10px !important;
+                opacity: 1;
+            }
+
+            &.previous,
+            &.previous:hover {
+                left: 10px !important;
+                opacity: 1;
+            }
+        }
+    }
+}

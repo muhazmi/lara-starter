@@ -1,0 +1,88 @@
+/* ----------------------------------------------------------------
+    Dropcat & Highlight
+-----------------------------------------------------------------*/
+.dropcap {
+    background: none repeat scroll 0 0 $light;
+    border-radius: 4px;
+    display: inline-block;
+    float: left;
+    font-size: 20px;
+    height: 40px;
+    line-height: 40px;
+    margin: 8px 20px 0 0;
+    text-align: center;
+    width: 40px;
+
+    &.dropcap-circle {
+        border-radius: 50%;
+    }
+
+    &.dropcap-large {
+        font-size: 44px;
+        height: 80px;
+        line-height: 80px;
+        width: 80px;
+    }
+
+    &.dropcap-small {
+        font-size: 16px;
+        height: 20px;
+        line-height: 20px;
+        margin: 3px 5px -3px 0;
+        width: 21px;
+    }
+
+    &.dropcap-colored {
+        background-color: $color-theme;
+        color: $color-white;
+    }
+}
+
+span.highlight {
+    padding: 0 5px;
+}
+
+.highlight {
+    &.highlight-primary {
+        color: $color-primary;
+        font-weight: bold;
+    }
+
+    &.highlight-secondary {
+        color: $color-secondary;
+        font-weight: bold;
+    }
+
+    &.highlight-warning {
+        color: $color-warning;
+        font-weight: bold;
+    }
+
+    &.highlight-danger {
+        color: $color-danger;
+        font-weight: bold;
+    }
+
+    &.highlight-info {
+        color: $color-info;
+        font-weight: bold;
+    }
+
+    a {
+        color: #333;
+    }
+
+    &.highlight-large {
+        font-size: 20px;
+    }
+
+    &.highlight-small {
+        font-size: 12px;
+        padding: 0 7px;
+    }
+
+    &.highlight-colored {
+        background-color: $color-theme;
+        color: $color-white;
+    }
+}

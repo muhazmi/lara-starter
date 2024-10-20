@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
-use App\Models\Category;
-use Illuminate\Support\Facades\Auth;
-use RealRashid\SweetAlert\Facades\Alert;
+use App\Models\Article;
 
 class HomeController extends Controller
 {
     public function index()
     {
+        $company    = companyInfo();
+
         $data = [
-            'page_title'    => 'Home',
-            'latest_posts'  => Post::orderby('id', 'desc')->limit(9)->get(),
-            'categories'    => Category::all(),
+            'page_title'        => 'Home',
+            'latest_articles'   => Article::orderBy('id', 'desc')->limit(3)->get(),
+            'tags'              => Article::orderBy('id', 'desc')->limit(3)->get(),
         ];
 
         return view('frontend.home.index', $data);
     }
 }
+

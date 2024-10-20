@@ -1,0 +1,542 @@
+/* ----------------------------------------------------------------
+Page Menu
+-----------------------------------------------------------------*/
+.page-menu {
+    position: relative;
+    background-color: $background-white;
+    border-bottom: 1px solid $border-color;
+    border-top: 1px solid $border-color;
+    height: 52px;
+    line-height: 48px;
+
+    a:not(.btn) {
+        color: $color-body;
+    }
+
+    &.no-border {
+        border: 0;
+    }
+
+    >.container {
+        position: relative;
+    }
+
+    .menu-title {
+        display: none;
+    }
+
+    nav {
+        background-color: $background-white;
+        text-align: center;
+
+        >ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+
+            >li {
+                transition: all .3s ease;
+                position: relative;
+                border: 0;
+                display: inline-block;
+                float: none;
+                padding: 0px 2px;
+                font-family: $font-menu;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+
+                >a {
+                    position: relative;
+                    padding: 6px 16px;
+                    font-size: 13px;
+                    line-height: 12px;
+                    color: $color-body;
+                    border-radius: 50px;
+                    transition: $transition-base;
+                    border-width: 2px;
+                    border-style: solid;
+                    border-color: transparent;
+                    font-weight: 500;
+
+                    &:after,
+                    &:before {
+                        transition: all .3s ease;
+                    }
+                }
+
+                &:hover,
+                &.active {
+                    >a {
+                        color: $color-theme;
+                    }
+                }
+
+                &.dropdown {
+                    line-height: 50px;
+
+                    a {
+                        padding-right: 20px;
+                    }
+
+                    &:before {
+                        font-size: 12px;
+                        transition: all .2s ease;
+                        content: "\e92e";
+                        font-family: $font-icon;
+                        right: 10px;
+                        top: 1px;
+                        position: absolute;
+                        color: $color-body;
+                        z-index: 2;
+                    }
+                }
+
+                .dropdown-menu {
+                    position: absolute;
+                    text-align: left;
+                    list-style: none;
+                    font-family: $font-menu-dropdown;
+                    padding: 14px 20px;
+                    width: auto;
+                    top: 50px;
+                    left: 0;
+                    margin: 0;
+                    border-radius: 4px;
+                    background-color: $background-white;
+                    border: 1px solid $border-color;
+                    min-width: 180px;
+                    box-shadow: 0 14px 20px rgba(0, 0, 0, 0.1);
+
+                    >li {
+                        width: 100%;
+
+                        a,
+                        >span {
+                            line-height: 26px;
+                            white-space: nowrap;
+                            display: block;
+                            padding: 4px 10px;
+                            font-size: 13px;
+                            font-weight: 400;
+                        }
+                    }
+
+                    &.menu-last {
+                        right: 0;
+                        left: auto;
+                    }
+                }
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    &.menu-rounded {
+        nav {
+            >ul {
+                >li {
+
+                    &:hover,
+                    &.active {
+                        >a {
+                            border-color: transparent;
+                            color: $color-white;
+                            background-color: $background-theme;
+                        }
+
+                        &.dropdown {
+                            &:before {
+                                color: $color-white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.menu-outline {
+        nav {
+            >ul {
+                >li {
+
+                    &:hover,
+                    &.active {
+                        >a {
+                            border-color: $color-theme;
+                            color: $color-theme;
+                            background-color: transparent;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.menu-lines {
+        nav {
+            >ul {
+                >li {
+                    >a {
+                        border-radius: 0;
+                        border: none;
+                        background-color: transparent;
+
+                        &:after {
+                            content: '';
+                            position: absolute;
+                            top: auto;
+                            bottom: -11px;
+                            left: 50%;
+                            width: 0;
+                            height: 1px;
+                            transition: all 0.3s ease;
+                        }
+                    }
+
+                    &:hover,
+                    &.active {
+                        >a {
+                            color: $color-theme;
+
+                            &:after {
+                                width: 100%;
+                                left: 0%;
+                                background-color: $color-theme;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.menu-solid {
+        nav {
+            >ul {
+                >li {
+                    >a {
+                        color: $color-body;
+                        border-radius: 4px;
+                    }
+
+                    &:hover,
+                    &.active {
+                        >a {
+                            background-color: $color-theme;
+                            color: $color-white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.menu-light {
+        nav {
+            >ul {
+                >li {
+                    >a {
+                        color: $color-body;
+                        background-color: transparent;
+                    }
+
+                    &:hover,
+                    &.active {
+                        >a {
+                            border-color: #ebebeb;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.inverted {
+        background-color: $background-dark;
+
+        nav {
+            background-color: $background-dark;
+
+            >ul {
+                >li {
+                    >a {
+                        border: 0;
+                        color: $color-white;
+                        background-color: transparent;
+                    }
+
+                    &:hover,
+                    &.active {
+                        >a {
+                            border-color: transparent;
+                            background-color: lighten($background-dark, 5%);
+                        }
+                    }
+
+                    .dropdown-menu {
+                        background-color: $background-dark;
+                        border: 1px solid $border-color-dark;
+                        box-shadow: 0 14px 20px rgba(255, 255, 255, 0.1);
+
+                        a {
+                            color: $color-white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &.menu-creative {
+        nav {
+            >ul {
+                >li {
+                    >a {
+                        border-radius: 0;
+                        border: none;
+                        background-color: transparent;
+
+                        &:after {
+                            background: $dark;
+                            content: "";
+                            height: 2px;
+                            left: 0;
+                            opacity: 0;
+                            position: absolute;
+                            top: 100%;
+                            transform: translateY(10px);
+                            transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
+                            width: 100%;
+                        }
+                    }
+
+                    &:hover,
+                    &.active {
+                        >a {
+                            color: $color-body;
+
+                            &:after {
+                                opacity: 1;
+                                transform: translateY(0px);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+#pageMenu-trigger {
+    float: right;
+    cursor: pointer;
+    font-size: 15px;
+    height: 48px;
+    line-height: 48px;
+    opacity: 0;
+    text-align: center;
+    width: 36px;
+    z-index: 12;
+    display: none;
+
+    i {
+        color: $color-dark;
+    }
+}
+
+body:not(.breakpoint-xs):not(.breakpoint-sm):not(.breakpoint-md) {
+    .page-menu {
+        nav {
+            >ul {
+                >li {
+                    &:hover>ul {
+                        display: block;
+                        animation: fade-in-out .3s ease;
+                        z-index: 3;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@include breakpoint-lg(max) {
+    .page-menu {
+        #pageMenu-trigger {
+            opacity: 1;
+            display: block;
+
+            i {
+                color: $color-body;
+            }
+        }
+
+        nav {
+            border-radius: 4px 0px 4px 4px;
+            border: 1px solid $border-color;
+            box-shadow: 0 33px 32px rgba(0, 0, 0, .1);
+            text-align: left;
+            display: none;
+            position: absolute;
+            float: right;
+            width: 190px;
+            top: 40px;
+            height: auto;
+            z-index: 11;
+            line-height: 26px;
+            right: 30px;
+
+            >ul {
+                padding: 14px 20px;
+                top: 0;
+                min-width: 100%;
+                overflow: hidden;
+
+                >li {
+                    width: 100%;
+                    padding: 0;
+
+                    >a,
+                    >span {
+                        line-height: 20px;
+                        width: 100%;
+                        display: block;
+                        padding: 6px 6px;
+                        border: none;
+                    }
+
+                    &.dropdown {
+                        &:before {
+                            right: 4px;
+                            color: $color-body;
+                            pointer-events: none;
+                            line-height: 36px;
+                        }
+
+                        &.hover-active {
+                            color: $color-body;
+
+                            .dropdown-menu {
+                                min-width: 100%;
+                                width: 100%;
+                                padding-left: 24px;
+                                display: block;
+                                position: relative;
+                                top: 0;
+                                box-shadow: none;
+                                border: 0;
+                                margin-top: 0;
+                                padding: 0;
+
+                                >li {
+
+                                    >a,
+                                    >span {
+                                        font-size: 12px;
+                                        padding: 4px 14px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    >ul {
+                        background-color: $color-white;
+                        border: 0;
+                        border-style: solid;
+                        border-color: $light;
+                        border-width: 1px !important;
+                        box-shadow: 0 33px 32px rgba(0, 0, 0, .1);
+                        left: auto;
+                        margin: 0;
+                        margin-top: -6px;
+                        border-radius: 4px;
+                        padding: 0;
+                        z-index: 1;
+
+                        >li {
+
+                            >a,
+                            >span {
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.menu-rounded,
+        &.menu-outline,
+        &.menu-lines,
+        &.menu-solid,
+        &.menu-light,
+        &.menu-creative,
+        &.inverted {
+            nav {
+                >ul {
+                    >li {
+                        >a {
+                            color: $color-body;
+                            border-radius: 0;
+                        }
+
+                        &:hover,
+                        &.active {
+                            >a {
+                                color: $color-theme;
+                                background-color: initial;
+                                border: 0;
+
+                                &:after {
+                                    display: none;
+                                }
+                            }
+
+                            &.dropdown {
+                                &:before {
+                                    color: $color-body;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.inverted {
+            background-color: $background-dark;
+
+            nav {
+                background-color: $background-dark;
+                border: 1px solid $border-color-dark;
+                box-shadow: 0 33px 32px rgba(255, 255, 255, .1);
+
+                >ul {
+                    >li {
+                        a {
+                            color: $color-white;
+                        }
+
+                        ul {
+                            background-color: $background-dark;
+                        }
+                    }
+                }
+            }
+        }
+
+        &.page-menu-active {
+            nav {
+                display: block;
+            }
+        }
+    }
+}

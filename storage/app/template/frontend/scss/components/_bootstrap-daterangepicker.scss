@@ -1,0 +1,58 @@
+/* ----------------------------------------------------------------
+	Date range picker
+-----------------------------------------------------------------*/
+.daterangepicker {
+	.ranges {
+		padding: 0;
+		margin: 0;
+
+		ul>li:last-child {
+			margin-bottom: 0 !important;
+		}
+	}
+
+	select.monthselect,
+	select.yearselect {
+		padding: 5px 8px !important;
+		border: 0px;
+		margin-bottom: 4px;
+	}
+
+	td.in-range {
+		background: #f4f5f8 !important;
+		color: #212529 !important;
+	}
+
+	td.active:not(.off),
+	td.active:hover,
+	.active.end-date.in-range {
+		background: $background-theme !important;
+		color: $color-white !important;
+	}
+
+	.drp-buttons .btn {
+		padding: 10px 10px;
+		line-height: 10px;
+	}
+}
+
+input.daterange:after,
+input.dates:after {
+	font-family: inspiro-icons !important;
+	font-style: normal;
+	font-weight: 400;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	content: "\e951";
+	position: absolute;
+	right: 4px;
+	background: blue;
+}
+
+.daterangepicker .calendar-time select.ampmselect,
+.daterangepicker .calendar-time select.hourselect,
+.daterangepicker .calendar-time select.minuteselect {
+	min-height: 20px;
+	background-color: $background-white !important;
+}

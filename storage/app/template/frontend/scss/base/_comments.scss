@@ -1,0 +1,116 @@
+/*------------------------------------------------------
+     Comments
+------------------------------------------------------*/
+.comments {
+    margin: 0;
+
+    .comment_number {
+        font-size: 18px;
+        margin: 0 0 30px;
+
+        span {
+            color: $color-theme;
+        }
+    }
+
+    .comment {
+        padding: 10px 0;
+        background-color: #fff;
+
+        .image {
+            border-radius: 65px;
+            display: block;
+            float: left;
+            height: 65px;
+            overflow: hidden;
+            width: 65px;
+        }
+
+        .text {
+            padding: 0 0 0 86px;
+            min-height: 80px;
+            position: relative;
+
+            .name {
+                display: block;
+                color: #303030;
+                font-size: 16px;
+                font-weight: 700;
+                margin-bottom: -4px;
+            }
+        }
+
+        .comment_date {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .text {
+            .comment-reply-link {
+                color: $color-theme;
+                font-size: 9px;
+                text-transform: uppercase;
+                font-weight: 700;
+                padding: 0 0 0 5px;
+                opacity: .7;
+
+                &:hover {
+                    opacity: 1;
+                }
+            }
+
+            .text_holder {
+                display: block;
+                margin: 3px 0 0 0;
+            }
+        }
+
+        .comment {
+            margin-left: 90px;
+        }
+    }
+}
+
+.post-item {
+    .comments {
+        padding: 40px 0;
+        border-top: 1px solid #eee;
+    }
+}
+
+.respond-form {
+    padding-top: 40px;
+}
+
+.respond-comment {
+    font-size: 18px;
+    margin: 0 0 30px;
+
+    span {
+        color: $color-theme;
+    }
+}
+
+@include breakpoint-lg(max) {
+    .comments {
+        padding: 22px 0 30px;
+        margin: 0;
+
+        .comment {
+            .image {
+                border-radius: 48px;
+                height: 48px;
+                width: 48px;
+                margin-right: 14px;
+            }
+
+            .text {
+                padding: 0;
+            }
+
+            .comment {
+                margin-left: 30px;
+            }
+        }
+    }
+}

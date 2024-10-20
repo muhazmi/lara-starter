@@ -1,0 +1,39 @@
+.shape-divider {
+    position: absolute;
+    width: 100%;
+    z-index: 0;
+    bottom: 0;
+    left:0;
+    pointer-events:none;
+    display: block;
+    svg {
+        width:101%;
+        height:100%;
+        left:50%;
+        position:absolute;
+        transform:translatex(-50%);
+        bottom:-2px
+    }
+
+    &[data-position="bottom"] {
+        bottom: -2px;
+        top: auto;
+    }
+
+    &[data-position="top"] {
+        bottom: auto;
+        top: -2px;
+    }
+
+    &[data-flip-horizontal="true"] {
+        transform: rotateY(180deg);
+    }
+
+    &[data-flip-vertical="true"] {
+        transform: rotateX(180deg);
+    }
+
+    &[data-flip-horizontal="true"][data-flip-vertical="true"] {
+        transform: rotateY(180deg) rotateX(180deg);
+    }
+}

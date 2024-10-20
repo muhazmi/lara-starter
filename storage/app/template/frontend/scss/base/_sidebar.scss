@@ -1,0 +1,42 @@
+.sidebar-menu {
+    font-family: $font-menu;
+
+    label {
+        display: block;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: .5px;
+
+        &~label {
+            margin-top: 30px;
+        }
+    }
+
+    li {
+        &+li {
+            margin-top: 8px;
+        }
+
+        padding: 0;
+        display: block;
+        font-size: 14px;
+
+        a {
+            color: $color-body;
+
+            >i {
+                margin-right: 10px;
+                width: 16px;
+            }
+
+            display: block;
+        }
+    }
+}
+
+.sidebar-modern {
+    .sidebar-menu {
+        padding: 0 10px;
+    }
+}

@@ -1,0 +1,29 @@
+// Background Image
+[data-bg-image] {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+
+    &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        background-color: $background-dark;
+        transition: opacity .5s linear;
+    }
+
+    &.bg-loaded {
+        &::before {
+            opacity: 0;
+        }
+    }
+}
+
+body[data-bg-image] {
+    background-attachment: fixed;
+    background-position: top center;
+}

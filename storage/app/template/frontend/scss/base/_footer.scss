@@ -1,0 +1,92 @@
+/* ----------------------------------------------------------------
+    FOOTER
+-----------------------------------------------------------------*/
+
+#footer {
+    display: block;
+    position: relative;
+    background-color: $footer-background;
+    font-size: 14px;
+    line-height: 32px;
+    font-weight: 400;
+    font-family: $font-headings;
+    a:not(.btn):not(:hover) {
+        color: $color-body;
+    }
+    p {
+        font-family: $font-headings;
+    }
+    a:not(.btn) {
+        font-weight: 400;
+    }
+
+    .footer-content {
+        padding: 60px 0 40px 0;
+    }
+    .widget .widget-title,
+    .widget h4 {
+        font-size: 14px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        ul {
+            li {
+                a {
+                    font-family: $font-headings;
+                    font-size: 15px;
+                    line-height: 32px;
+                    color: #999;
+                }
+            }
+        }
+    }
+    .copyright-content {
+        min-height: 80px;
+        padding: 30px 0;
+        background-color: darken($footer-background, 3%);
+        font-size: 13px;
+    }
+    //chkd
+    .logo {
+        margin-bottom: 54px;
+        margin-top: 12px;
+        max-width: 80px;
+    }
+    //chkd
+    .footer-logo {
+        border-right: 1px solid #333;
+        margin-bottom: 20px;
+        margin-right: 18px;
+        padding-right: 16px;
+    }
+}
+
+.dark #footer,
+#footer.inverted,
+#footer.dark {
+    // Dark Version 
+    background-color: #181818;
+    p {
+        color: #999;
+    }
+    a:not(.btn) {
+        font-weight: 400;
+    }
+    a:not(.btn):not(:hover) {
+        color: #999;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #fff;
+    }
+    .widget .widget-title,
+    .widget h4 {
+        color: #fff;
+    }
+    .copyright-content {
+        background-color: #1E1E1E;
+    }
+}

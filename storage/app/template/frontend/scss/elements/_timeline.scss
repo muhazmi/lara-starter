@@ -1,0 +1,58 @@
+// Timeline
+.timeline {
+    list-style-type: none;
+    position: relative;
+
+    &:before {
+        content: '';
+        position: absolute;
+        left: 16px;
+        height: 100%;
+        z-index: 2;
+        top: 0;
+        bottom: 0;
+        border-left: 3px dashed#e3e6f0;
+    }
+
+    .timeline-item {
+        >h4 {
+            margin-bottom: 0;
+        }
+
+        .timeline-item-date {
+            font-size: .9rem;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item-image {
+            border-radius: $border-radius;
+            overflow: hidden;
+            margin-bottom: 30px;
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        margin: 3rem 2rem 3rem 5rem;
+
+        .timeline-icon {
+            background-color: $background-theme;
+            position: absolute;
+            border-radius: 50%;
+            left: 0px;
+            width: 34px;
+            height: 34px;
+            z-index: 3;
+            color: $color-white;
+            text-align: center;
+            padding: 5px;
+            font-size: 18px;
+
+            i {
+                margin-top: 1px;
+            }
+        }
+    }
+}

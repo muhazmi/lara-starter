@@ -1,69 +1,62 @@
-@extends('layouts.guest')
+<x-guest-layout>
+    <form method="POST" action="{{ route('register') }}">
+        @csrf
 
-@section('content')
-    <div class="page page-center">
-        <div class="container container-tight py-4">
-            <div class="text-center mb-4">
-                <a href="#" class="navbar-brand navbar-brand-autodark">
-                    <img src="{{ asset('images/general/app-logo.png') }}" height="36" alt="">
-                </a>
-            </div>
-            <form method="POST" action="{{ route('register') }}">
-                @csrf
-                <div class="card-body">
-                    <h2 class="card-title text-center mb-4">Daftar Akun Baru</h2>
-                    <div class="mb-3">
-                        <label class="form-label">Nama Lengkap</label>
-                        <input type="name" class="form-control @error('name') is-invalid @enderror" id="name"
-                            name="name" value="{{ old('name') }}" placeholder="name">
-                        @if ($errors->has('name'))
-                            <span class="text-danger">{{ $errors->first('name') }}</span>
-                        @endif
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Email address</label>
-                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
-                            name="email" value="{{ old('email') }}" placeholder="Email">
-                        @if ($errors->has('email'))
-                            <span class="text-danger">{{ $errors->first('email') }}</span>
-                        @endif
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <div class="input-group input-group-flat">
-                            <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                id="password" name="password" value="{{ old('password') }}" placeholder="password">
-                            @if ($errors->has('password'))
-                                <span class="text-danger">{{ $errors->first('password') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Konfirmasi Password</label>
-                        <div class="input-group input-group-flat">
-                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror"
-                                id="password_confirmation" name="password_confirmation"
-                                value="{{ old('password_confirmation') }}" placeholder="password_confirmation">
-                            @if ($errors->has('password_confirmation'))
-                                <span class="text-danger">{{ $errors->first('password_confirmation') }}</span>
-                            @endif
-                        </div>
-                    </div>
-                    {{-- <div class="mb-3">
-            <label class="form-check">
-              <input type="checkbox" class="form-check-input">
-              <span class="form-check-label">Agree the <a href="./terms-of-service.html" tabindex="-1">terms and
-                  policy</a>.</span>
-            </label>
-          </div> --}}
-                    <div class="form-footer">
-                        <button type="submit" class="btn btn-primary w-100">Daftar Sekarang</button>
-                    </div>
-                </div>
-            </form>
-            <div class="text-center text-muted mt-3">
-                Sudah punya akun? <a href="{{ url('login') }}" tabindex="-1">Login disini</a>
+        <!-- Name -->
+        <div>
+            <x-input-label for="name" :value="__('Name')" />
+            <x-text-input id="name" class="block w-full mt-1" type="text" name="name" :value="old('name')" required
+                autofocus autocomplete="name" />
+            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+        </div>
+
+        <!-- Email Address -->
+        <div class="mt-4">
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')"
+                required autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <!-- Mobile Phone -->
+        <div class="mt-4">
+            <x-input-label for="mobile_phone" :value="__('Mobile Phone')" />
+            <x-text-input id="mobile_phone" class="block w-full mt-1" type="text" name="mobile_phone" :value="old('mobile_phone')"
+                required autocomplete="username" />
+            <x-input-error :messages="$errors->get('mobile_phone')" class="mt-2" />
+        </div>
+
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
+
+            <x-text-input id="password" class="block w-full mt-1" type="password" name="password" required
+                autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="mt-4">
+            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
+
+            <x-text-input id="password_confirmation" class="block w-full mt-1" type="password"
+                name="password_confirmation" required autocomplete="new-password" />
+
+            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        </div>
+
+        <div class="mt-4">
+            <x-primary-button>
+                {{ __('Register') }}
+            </x-primary-button>
+        </div>
+
+        <div class="mt-4">
+            <div class="text-sm text-gray-600 row dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100">Sudah punya Akun?
+                <a href="{{ route('login') }}" class="text-blue-500 hover:text-blue-800">Login disini</a>
             </div>
         </div>
-    </div>
-@endsection
+
+    </form>
+</x-guest-layout>

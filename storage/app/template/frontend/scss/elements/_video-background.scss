@@ -1,0 +1,44 @@
+.html5vid {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity .5s linear;
+
+    &:before {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 1;
+        background-color: $background-dark;
+    }
+
+    video {
+        max-width: none !important;
+        border: none;
+        object-fit: cover;
+        background-size: cover;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0px;
+        top: 0%;
+        display: block;
+    }
+
+    &.video-loaded {
+        opacity: 1;
+    }
+}
+
+video {
+    width: 100%;
+}
