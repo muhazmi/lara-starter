@@ -37,6 +37,7 @@ Backend: <a href="https://adminlte.io/themes/v3">AdminLTE 3</a>
             <li>php artisan key:generate</li>
             <li>php artisan migrate</li>
             <li>php artisan db:seed</li>
+            <li>php artisan storage:link</li>
         </ul>
     </li>
     <li>Setup SMTP Mail Credential (optional)
