@@ -5,7 +5,7 @@
 /public/hot
 /public/storage
 /storage/*.key
-# /storage/app/assets/images
+/storage/app/assets/images
 /storage/app/private
 /storage/app/backup_db
 /storage/app/backup-temp
