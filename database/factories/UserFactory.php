@@ -2,37 +2,43 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
-use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ */
 class UserFactory extends Factory
 {
-    protected $model = User::class;
+    /**
+     * The current password being used by the factory.
+     */
+    protected static ?string $password;
 
-    public function definition()
+    /**
+     * Define the model's default state.
+     *
+     * @return array<string, mixed>
+     */
+    public function definition(): array
     {
         return [
-            'identity_card_number'  => $this->faker->unique()->numerify('############'),
-            'name'                  => $this->faker->name,
-            'birthplace'            => $this->faker->city,
-            'email'                 => $this->faker->unique()->safeEmail,
-            'gender'                => $this->faker->randomElement([0, 1]),
-            'mobile_phone'          => $this->faker->phoneNumber,
-            'address'               => $this->faker->address,
-            'photo'                 => $this->faker->imageUrl,
-            'is_active'             => $this->faker->boolean,
-            'hire_date'             => $this->faker->dateTimeBetween('first day of January', 'now'),
-            'password'              => bcrypt('password'),
-            'email_verified_at'     => now(),
-            'remember_token'        => Str::random(10),
+            'name' => fake()->name(),
+            'email' => fake()->unique()->safeEmail(),
+            'email_verified_at' => now(),
+            'password' => static::$password ??= Hash::make('password'),
+            'remember_token' => Str::random(10),
         ];
     }
 
-    public function role($roleName)
+    /**
+     * Indicate that the model's email address should be unverified.
+     */
+    public function unverified(): static
     {
-        return $this->afterCreating(function (User $user) use ($roleName) {
-            $user->assignRole($roleName);
-        });
+        return $this->state(fn (array $attributes) => [
+            'email_verified_at' => null,
+        ]);
     }
 }

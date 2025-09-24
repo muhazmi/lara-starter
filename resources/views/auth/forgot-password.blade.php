@@ -21,10 +21,5 @@
                 {{ __('Email Password Reset Link') }}
             </x-primary-button>
         </div>
-        <div class="flex items-center justify-end mt-4">
-            <x-secondary-button>
-                <a href="{{ route('login') }}">{{ __('Login') }}</a>
-            </x-secondary-button>
-        </div>
     </form>
 </x-guest-layout>

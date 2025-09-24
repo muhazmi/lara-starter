@@ -16,11 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        $data = [
-            'page_title' => __('Login'),
-        ];
-
-        return view('auth.login', $data);
+        return view('auth.login');
     }
 
     /**
@@ -32,17 +28,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $user = Auth::user();
-
-        // Cek role pengguna dan redirect ke halaman yang sesuai
-        if ($user->hasRole('customer')) {
-            return redirect()->intended('/');
-        } elseif ($user->hasAnyRole(['masteradmin','superadmin', 'admin', 'admin_master', 'admin_cms', 'admin_finance'])) {
-            return redirect()->intended(route('backend.dashboard', absolute: false));
-        }
-
-        // Redirect default jika role tidak dikenali
-        return redirect()->intended(route('/'));
+        return redirect()->intended(route('dashboard', absolute: false));
     }
 
     /**

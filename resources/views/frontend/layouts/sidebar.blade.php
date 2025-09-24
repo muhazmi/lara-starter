@@ -1,1 +1,0 @@
-@include('frontend.layouts.include.sidebar-article')

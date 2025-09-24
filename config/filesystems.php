@@ -24,7 +24,7 @@ return [
     | may even configure multiple disks for the same driver. Examples for
     | most supported storage drivers are configured here for reference.
     |
-    | Supported Drivers: "local", "ftp", "sftp", "s3"
+    | Supported drivers: "local", "ftp", "sftp", "s3"
     |
     */
 
@@ -32,44 +32,19 @@ return [
 
         'local' => [
             'driver' => 'local',
-            'root' => storage_path('app'),
+            'root' => storage_path('app/private'),
+            'serve' => true,
             'throw' => false,
+            'report' => false,
         ],
 
         'public' => [
             'driver' => 'local',
-            'root' => storage_path('assets'),
-            'url' => env('APP_URL') . '/assets',
+            'root' => storage_path('app/public'),
+            'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
             'throw' => false,
-        ],
-
-        'assets' => [
-            'driver' => 'local',
-            'root' => storage_path('app/assets'),
-            'url' => env('APP_URL') . '/assets',
-            'visibility' => 'public',
-        ],
-
-        'images' => [
-            'driver' => 'local',
-            'root' => storage_path('app/assets/images'),
-            'url' => env('APP_URL') . '/assets/images',
-            'visibility' => 'public',
-        ],
-
-        // Disk untuk backup database
-        'backup_db' => [
-            'driver' => 'local',
-            'root' => storage_path('app/backup_db'), // Folder penyimpanan backup
-        ],
-
-        'private' => [
-            'driver' => 'local',
-            'root' => storage_path('app/private'),
-            'url' => env('APP_URL') . '/storage/private',
-            'visibility' => 'private',
-            'throw' => false,
+            'report' => false,
         ],
 
         's3' => [
@@ -82,6 +57,7 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
             'use_path_style_endpoint' => env('AWS_USE_PATH_STYLE_ENDPOINT', false),
             'throw' => false,
+            'report' => false,
         ],
 
     ],
@@ -98,7 +74,7 @@ return [
     */
 
     'links' => [
-        public_path('assets') => storage_path('app/assets'),
+        public_path('storage') => storage_path('app/public'),
     ],
 
 ];

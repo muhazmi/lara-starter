@@ -1,6 +1,4 @@
-// import './bootstrap';
-import './darkModeToggle.js';
-import 'flowbite';
+import './bootstrap';
 
 import Alpine from 'alpinejs';
 
